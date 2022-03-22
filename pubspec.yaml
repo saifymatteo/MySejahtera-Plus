@@ -26,11 +26,11 @@ dependencies:
 
   # List of dependecies used in the app
   bloc: ^8.0.3 # State Management package - https://pub.dev/packages/bloc
+  flutter_bloc: ^8.0.1 # BLoC for Flutter - https://pub.dev/packages/flutter_bloc
   connectivity_plus: ^2.2.1 # To check network connectivity - https://pub.dev/packages/connectivity_plus
   animations: ^2.0.2 # Add animation to widget like Hero - https://pub.dev/packages/animations
   salomon_bottom_bar: ^3.3.0 # ! Bottom navigation bar - https://pub.dev/packages/salomon_bottom_bar
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
-  flutter_icons: ^1.1.0 # Icon bundles - https://pub.dev/packages/flutter_icons
 
 dev_dependencies:
   flutter_test:
@@ -40,8 +40,7 @@ dev_dependencies:
   # List of dependecies used in development
   device_preview: ^1.0.0 # To preview app on different devices - https://pub.dev/packages/device_preview
 
-
 flutter:
   uses-material-design: true
   assets:
-    - asset
+    - asset/
