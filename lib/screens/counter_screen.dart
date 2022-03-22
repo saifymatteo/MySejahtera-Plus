@@ -56,7 +56,7 @@ class CounterScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, Screens.home);
+                  Navigator.pop(context);
                 },
                 child: const Text('Back to Home'),
               )
