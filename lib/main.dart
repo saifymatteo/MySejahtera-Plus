@@ -21,9 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MySejahtera Plus',
       theme: ThemeData(
-          primarySwatch: kPrimarySwatch,
-          textTheme:
-              GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
+          primarySwatch: kPrimarySwatchTheme,
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
       home: const MainComponent(),
     );
   }
@@ -41,31 +40,64 @@ class _MainComponentState extends State<MainComponent> {
 
   @override
   Widget build(BuildContext context) {
+    final PageController pageController =
+        PageController(initialPage: screenIndex);
+
     return Scaffold(
-      body: screenOptions.elementAt(screenIndex),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SalomonBottomBar(
-          currentIndex: screenIndex,
-          onTap: (index) => setState(() => screenIndex = index),
-          items: [
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.home),
-              title: const Text('Home'),
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.assessment),
-              title: const Text('Statistics'),
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.qr_code),
-              title: const Text('Check-In'),
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.person),
-              title: const Text('Profile'),
-            ),
-          ],
+      body: SafeArea(
+        child: PageView(
+          controller: pageController,
+          children: screenOptions,
+          onPageChanged: (index) {
+            setState(() {
+              screenIndex = index;
+            });
+          },
+        ),
+        minimum: const EdgeInsets.only(left: 15, right: 15, top: 40),
+      ),
+      bottomNavigationBar: Material(
+        elevation: 5,
+        child: Container(
+          padding:
+              const EdgeInsets.only(top: 8.0, left: 15, right: 15, bottom: 10),
+          child: SalomonBottomBar(
+            currentIndex: screenIndex,
+            onTap: (index) {
+              setState(() {
+                screenIndex = index;
+                if (pageController.hasClients) {
+                  pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease,
+                  );
+                }
+              });
+            },
+            items: [
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.home_outlined),
+                title: const Text('Home'),
+                activeIcon: const Icon(Icons.home),
+              ),
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.assessment_outlined),
+                title: const Text('Statistics'),
+                activeIcon: const Icon(Icons.assessment),
+              ),
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.qr_code_outlined),
+                title: const Text('Check-In'),
+                activeIcon: const Icon(Icons.qr_code),
+              ),
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.person_outline),
+                title: const Text('Profile'),
+                activeIcon: const Icon(Icons.person),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -75,6 +107,6 @@ class _MainComponentState extends State<MainComponent> {
 List<Widget> screenOptions = <Widget>[
   const HomeScreen(),
   const StatisticScreen(),
-  const CheckInScreen(),
+  CheckInScreen(),
   const ProfileScreen(),
 ];
