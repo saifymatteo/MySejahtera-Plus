@@ -31,6 +31,7 @@ dependencies:
   animations: ^2.0.2 # Add animation to widget like Hero - https://pub.dev/packages/animations
   salomon_bottom_bar: ^3.3.0 # TODO: Bottom navigation bar - https://pub.dev/packages/salomon_bottom_bar
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
+  # getwidget: ^2.0.5 # Open source pre-built UI - https://pub.dev/packages/getwidget
 
 dev_dependencies:
   flutter_test:
@@ -43,4 +44,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - asset/
+    - asset/images/
