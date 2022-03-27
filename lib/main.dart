@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+// import 'package:device_preview/device_preview.dart';
 
 import 'helper/constant.dart';
 
@@ -11,6 +12,9 @@ import 'screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
+  // ! TODO: Remove device preview later
+  // runApp(DevicePreview(
+  //     enabled: !kReleaseMode, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MySejahtera Plus',
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
       theme: ThemeData(
           primarySwatch: kPrimarySwatchTheme,
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
