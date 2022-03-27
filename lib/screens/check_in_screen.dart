@@ -22,77 +22,77 @@ class CheckInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            // TODO: Implement global variable for date.
+            Text(
+              DateFormat('MMMM d, EEEE').format(currentDate),
+              style: TextStyle(color: kPrimarySwatch),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // TODO: Implement global variable for date.
-                Text(
-                  DateFormat('MMMM d, EEEE').format(currentDate),
-                  style: TextStyle(color: kPrimarySwatch),
+                const TextTitle(
+                  title: 'Check-in 👋',
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const TextTitle(
-                      title: 'Check-in 👋',
-                    ),
-                    // TODO: Implement onPressed() to History Screen
-                    OpenContainer(
-                      openBuilder: (context, closedContainer) =>
-                          CheckInHistoryScreen(
-                        onPressed: closedContainer,
-                      ),
-                      closedShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      closedBuilder: (context, openContainer) => ButtonColor(
-                        text: 'History',
-                        onPressed: openContainer,
-                      ),
-                    ),
-                  ],
+                // TODO: Implement onPressed() to History Screen
+                OpenContainer(
+                  openBuilder: (context, closedContainer) =>
+                      CheckInHistoryScreen(
+                    onPressed: closedContainer,
+                  ),
+                  closedShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  closedBuilder: (context, openContainer) => ButtonColor(
+                    text: 'History',
+                    onPressed: openContainer,
+                  ),
                 ),
               ],
             ),
-            SingleChildScrollView(
-              child: Column(
-                children: const [
-                  CardVaccinated(),
-                  CardRiskStatus(),
-                  CardLastCheckIn(),
-                ],
-              ),
-            ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: OpenContainer(
-              openBuilder: (context, closedContainer) => CheckInQrScannerScreen(
-                onPressed: closedContainer,
-              ),
-              closedColor: kPrimarySwatch,
-              closedShape: RoundedRectangleBorder(
+        Expanded(
+          flex: 4,
+          child: ListView(
+            children: const [
+              CardVaccinated(),
+              CardRiskStatus(),
+              CardLastCheckIn(),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 20),
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              closedBuilder: (context, openContainer) => InkWell(
-                onTap: openContainer,
-                child: Center(
-                  heightFactor: 2,
-                  child: Text(
-                    'Scan QR Check-In',
-                    style: GoogleFonts.poppins(
-                      color: kWhiteColor,
-                      textStyle: Theme.of(context).textTheme.headline4,
-                      fontWeight: FontWeight.w600,
+              child: OpenContainer(
+                openBuilder: (context, closedContainer) =>
+                    CheckInQrScannerScreen(
+                  onPressed: closedContainer,
+                ),
+                closedColor: kPrimarySwatch,
+                closedShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                closedBuilder: (context, openContainer) => InkWell(
+                  onTap: openContainer,
+                  child: Center(
+                    heightFactor: 2,
+                    child: Text(
+                      'Scan QR Check-In',
+                      style: GoogleFonts.poppins(
+                        color: kWhiteColor,
+                        textStyle: Theme.of(context).textTheme.headline4,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
