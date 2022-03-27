@@ -30,8 +30,10 @@ dependencies:
   connectivity_plus: ^2.2.1 # To check network connectivity - https://pub.dev/packages/connectivity_plus
   animations: ^2.0.2 # Add animation to widget like Hero - https://pub.dev/packages/animations
   salomon_bottom_bar: ^3.3.0 # Bottom navigation bar - https://pub.dev/packages/salomon_bottom_bar
+  dropdown_button2: ^1.2.2 # Better dropdown menu - https://pub.dev/packages/dropdown_button2
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
-  # getwidget: ^2.0.5 # Open source pre-built UI - https://pub.dev/packages/getwidget
+  # TODO: QR code iOS configuration
+  scan: ^1.6.0 # QR code scanner - https://pub.dev/packages/scan
 
 dev_dependencies:
   flutter_test:
@@ -45,3 +47,7 @@ flutter:
   uses-material-design: true
   assets:
     - asset/images/
+  fonts:
+    - family: CheckInIcons
+      fonts:
+        - asset: fonts/CheckInIcons.ttf
