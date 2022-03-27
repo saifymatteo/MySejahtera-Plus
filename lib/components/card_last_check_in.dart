@@ -14,7 +14,7 @@ class CardLastCheckIn extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Card(
         color: kDarkWhiteColor,
-        elevation: 10,
+        elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -30,7 +30,7 @@ class CardLastCheckIn extends StatelessWidget {
                 'Last Check-In',
                 style: GoogleFonts.poppins(
                   color: kDarkGreyColor,
-                  textStyle: Theme.of(context).textTheme.headline4,
+                  textStyle: Theme.of(context).textTheme.headlineSmall,
                   height: 0.7,
                   fontWeight: FontWeight.w600,
                 ),
@@ -47,7 +47,7 @@ class CardLastCheckIn extends StatelessWidget {
                     'Suria KLCC',
                     style: GoogleFonts.poppins(
                       color: kDarkGreyColor,
-                      textStyle: Theme.of(context).textTheme.headline6,
+                      textStyle: Theme.of(context).textTheme.titleLarge,
                       height: 0.7,
                       fontWeight: FontWeight.w600,
                     ),

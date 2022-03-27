@@ -13,7 +13,7 @@ class CardRiskStatus extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Card(
         color: kRiskStatusGreen,
-        elevation: 10,
+        elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -29,7 +29,7 @@ class CardRiskStatus extends StatelessWidget {
                 'Risk Status',
                 style: GoogleFonts.poppins(
                   color: kWhiteColor,
-                  textStyle: Theme.of(context).textTheme.headline4,
+                  textStyle: Theme.of(context).textTheme.headlineSmall,
                   height: 0.7,
                   fontWeight: FontWeight.w600,
                 ),
@@ -45,7 +45,7 @@ class CardRiskStatus extends StatelessWidget {
                 'Low Risk No Symptom',
                 style: GoogleFonts.poppins(
                   color: kWhiteColor,
-                  textStyle: Theme.of(context).textTheme.headline6,
+                  textStyle: Theme.of(context).textTheme.titleLarge,
                   fontWeight: FontWeight.w600,
                   height: 0.7,
                 ),

@@ -14,7 +14,7 @@ class CardVaccinated extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Card(
         color: kVaccinatedFull,
-        elevation: 10,
+        elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -60,7 +60,7 @@ class CardVaccinated extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 color: kWhiteColor,
                                 textStyle:
-                                    Theme.of(context).textTheme.headline5,
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
                             ),
                             Icon(
@@ -77,7 +77,7 @@ class CardVaccinated extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 color: kWhiteColor,
                                 textStyle:
-                                    Theme.of(context).textTheme.headline5,
+                                    Theme.of(context).textTheme.headlineSmall,
                                 height: 0.8,
                                 fontWeight: FontWeight.w600,
                               ),
