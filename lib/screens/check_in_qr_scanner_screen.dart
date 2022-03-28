@@ -5,7 +5,7 @@ import 'package:mysejahtera_plus/helper/check_in_icons_icons.dart';
 import 'package:mysejahtera_plus/helper/constant.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scan/scan.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class CheckInQrScannerScreen extends StatefulWidget {
   const CheckInQrScannerScreen({Key? key, required this.onPressed})
@@ -18,7 +18,8 @@ class CheckInQrScannerScreen extends StatefulWidget {
 }
 
 class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
-  ScanController scanController = ScanController();
+  MobileScannerController scannerController = MobileScannerController();
+  String barcodeValue = 'unknown';
 
   @override
   Widget build(BuildContext context) {
@@ -69,45 +70,73 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Stack(
                       children: [
-                        ScanView(
-                          controller: scanController,
-                          scanAreaScale: 0.7,
-                          scanLineColor: kWhiteColor,
-                          onCapture: (value) {
-                            debugPrint('Barcode: $value');
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) => SizedBox(
-                                height: 200,
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Text('Barcode: $value'),
-                                      ButtonColor(
-                                        text: 'Close',
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
+                        MobileScanner(
+                          allowDuplicates: false,
+                          controller: scannerController,
+                          onDetect: (barcode, args) {
+                            // Check for QR code
+                            if (barcode.format == BarcodeFormat.qrCode) {
+                              barcodeValue = barcode.rawValue!;
+                              debugPrint('Barcode: $barcodeValue');
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => SizedBox(
+                                  height: 200,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Text('Barcode: $barcodeValue'),
+                                        ButtonColor(
+                                          text: 'Close',
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
                           },
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: const Image(
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            image: AssetImage('asset/images/overlay.png'),
+                          ),
                         ),
                         Align(
                           alignment: Alignment.bottomCenter,
-                          child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                scanController.toggleTorchMode();
-                              });
-                            },
-                            iconSize: 60,
-                            icon: Icon(
-                              Icons.flash_on_rounded,
-                              color: kWhiteColor,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: IconButton(
+                              onPressed: () {
+                                scannerController.toggleTorch();
+                              },
+                              iconSize: 50,
+                              // TODO: Probably change ValueListener with BLoC later
+                              icon: ValueListenableBuilder(
+                                valueListenable: scannerController.torchState,
+                                builder: (context, state, child) {
+                                  switch (state as TorchState) {
+                                    case TorchState.off:
+                                      return Icon(
+                                        // Icons.flash_on_rounded,
+                                        Icons.flashlight_on_rounded,
+                                        color: kWhiteColor,
+                                      );
+                                    case TorchState.on:
+                                      return Icon(
+                                        // Icons.flash_off_rounded,
+                                        Icons.flashlight_off_rounded,
+                                        color: kWhiteColor.withOpacity(0.7),
+                                      );
+                                  }
+                                },
+                              ),
                             ),
                           ),
                         ),
