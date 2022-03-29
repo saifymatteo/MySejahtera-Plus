@@ -59,6 +59,11 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                   color: kDarkGreyColor.withOpacity(0.5),
                 ),
               ),
+              //! FIXME: REMOVE LATER
+              ButtonColor(
+                text: 'open bottomsheet',
+                onPressed: () => checkInQrBottomSheet(context),
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -78,25 +83,7 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                             if (barcode.format == BarcodeFormat.qrCode) {
                               barcodeValue = barcode.rawValue!;
                               debugPrint('Barcode: $barcodeValue');
-                              showModalBottomSheet(
-                                context: context,
-                                builder: (context) => SizedBox(
-                                  height: 200,
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text('Barcode: $barcodeValue'),
-                                        ButtonColor(
-                                          text: 'Close',
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
+                              checkInQrBottomSheet(context);
                             }
                           },
                         ),
@@ -147,6 +134,49 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> checkInQrBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      context: context,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Image(
+                image: const AssetImage('asset/images/bottom_divider.png'),
+                width: MediaQuery.of(context).size.width / 7,
+              ),
+            ),
+            Text('Barcode: $barcodeValue'),
+            ButtonColor(
+              text: 'Close',
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            Text(
+              'Check-in with...',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
+                textStyle: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+          ],
         ),
       ),
     );
