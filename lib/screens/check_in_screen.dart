@@ -43,6 +43,7 @@ class CheckInScreen extends StatelessWidget {
                       CheckInHistoryScreen(
                     onPressed: closedContainer,
                   ),
+                  closedColor: kPrimarySwatch,
                   closedShape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40),
                   ),

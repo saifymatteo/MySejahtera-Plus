@@ -16,6 +16,7 @@ class CheckInHistoryScreen extends StatelessWidget {
 
   final VoidCallback onPressed;
 
+  // TODO: Implement statistic later
   final List<String> dropdownItems = [
     'This Month',
     'This Quarter',
@@ -42,7 +43,8 @@ class CheckInHistoryScreen extends StatelessWidget {
                   Text(
                     'January 01 - January 30',
                     style: GoogleFonts.poppins(
-                      textStyle: Theme.of(context).textTheme.bodyLarge,
+                      textStyle: Theme.of(context).textTheme.titleMedium,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   ButtonDropDown(
@@ -57,7 +59,7 @@ class CheckInHistoryScreen extends StatelessWidget {
                     //! TODO: Dynamically generate this with ListView.builder
                     OpenContainer(
                       closedElevation: 0,
-                      closedColor: kWhiteColor.withOpacity(0),
+                      closedColor: const Color(0xFFfafafa),
                       openBuilder: (context, closedContainer) =>
                           CheckInInDetails(
                         onPressed: closedContainer,
@@ -73,13 +75,14 @@ class CheckInHistoryScreen extends StatelessWidget {
                         iconCheckInOrOut: Icon(
                           CheckInIcons.checkin,
                           color: kWhiteColor,
+                          size: 30,
                         ),
                         onPressed: openContainer,
                       ),
                     ),
                     OpenContainer(
                       closedElevation: 0,
-                      closedColor: kWhiteColor.withOpacity(0),
+                      closedColor: const Color(0xFFfafafa),
                       openBuilder: (context, closedContainer) =>
                           CheckInOutDetails(
                         onPressed: closedContainer,
@@ -95,6 +98,7 @@ class CheckInHistoryScreen extends StatelessWidget {
                         iconCheckInOrOut: Icon(
                           CheckInIcons.checkout,
                           color: kWhiteColor,
+                          size: 30,
                         ),
                         onPressed: openContainer,
                       ),
