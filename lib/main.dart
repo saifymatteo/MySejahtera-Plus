@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 // import 'package:device_preview/device_preview.dart';
 
@@ -14,7 +15,7 @@ void main() {
   runApp(const MyApp());
   // ! TODO: Remove device preview later
   // runApp(DevicePreview(
-  //     enabled: !kReleaseMode, builder: (context) => const MyApp()));
+  //     builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,6 +24,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, widget) => ResponsiveWrapper.builder(
+        BouncingScrollWrapper.builder(context, widget!),
+        maxWidth: 1000,
+        minWidth: 400,
+        defaultScale: true,
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(400, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+        ],
+      ),
+
       title: 'MySejahtera Plus',
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),

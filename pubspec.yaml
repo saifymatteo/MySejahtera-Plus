@@ -34,6 +34,7 @@ dependencies:
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
   # TODO: QR code iOS configuration
   mobile_scanner: ^1.0.0 # QR code scanner - https://pub.dev/packages/mobile_scanner
+  responsive_framework: ^0.1.7 # Easy responsive UI - https://pub.dev/packages/responsive_framework
 
 dev_dependencies:
   flutter_test:
