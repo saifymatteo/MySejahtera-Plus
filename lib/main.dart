@@ -35,13 +35,15 @@ class MyApp extends StatelessWidget {
           const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
         ],
       ),
-
+      debugShowCheckedModeBanner: false,
+      // showPerformanceOverlay: true,
       title: 'MySejahtera Plus',
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
       theme: ThemeData(
           primarySwatch: kPrimarySwatchTheme,
-          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+          unselectedWidgetColor: kPrimarySwatch),
       home: const MainComponent(),
     );
   }
