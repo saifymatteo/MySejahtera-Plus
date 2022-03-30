@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+
 import 'package:mysejahtera_plus/components/button_close.dart';
 import 'package:mysejahtera_plus/components/button_color.dart';
 import 'package:mysejahtera_plus/helper/check_in_icons_icons.dart';
 import 'package:mysejahtera_plus/helper/constant.dart';
-
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:mysejahtera_plus/helper/name_initial.dart';
 
 class CheckInQrScannerScreen extends StatefulWidget {
   const CheckInQrScannerScreen({Key? key, required this.onPressed})
@@ -139,6 +140,8 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
     );
   }
 
+  // TODO: Pass in checkbox value with BLoC and update state
+
   Future<dynamic> checkInQrBottomSheet(BuildContext context) {
     return showModalBottomSheet(
       isScrollControlled: true,
@@ -150,7 +153,7 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
       ),
       context: context,
       builder: (context) => Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -162,23 +165,175 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                 width: MediaQuery.of(context).size.width / 7,
               ),
             ),
-            Text('Barcode: $barcodeValue'),
-            ButtonColor(
-              text: 'Close',
-              onPressed: () {
-                Navigator.pop(context);
-              },
+            Padding(
+              padding: const EdgeInsets.only(top: 30, bottom: 10),
+              child: Text(
+                'Check-in with...',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
+                  textStyle: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
             ),
-            Text(
-              'Check-in with...',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w700,
-                textStyle: Theme.of(context).textTheme.titleLarge,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: SizedBox(
+                height: 230,
+                child: ListView(
+                  children: const [
+                    CheckInWithNameListTile(name: 'Peter Parker'),
+                    CheckInWithNameListTile(name: 'John Parker'),
+                    CheckInWithNameListTile(name: 'Jennifer Parker'),
+                    CheckInWithNameListTile(name: 'Katie Parker'),
+                  ],
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              color: kDarkGreyColor.withOpacity(0.3),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Text(
+                'Check-out automatically after...',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
+                  textStyle: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 230,
+              child: ListView(
+                children: const [
+                  CheckOutWithTimeListTile(timeText: '15 minutes'),
+                  CheckOutWithTimeListTile(timeText: '30 minutes'),
+                  CheckOutWithTimeListTile(timeText: '60 minutes'),
+                  CheckOutCustomListTile(text: 'Custom'),
+                ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CheckOutWithTimeListTile extends StatefulWidget {
+  const CheckOutWithTimeListTile({
+    Key? key,
+    required this.timeText,
+  }) : super(key: key);
+
+  final String timeText;
+
+  @override
+  State<CheckOutWithTimeListTile> createState() =>
+      _CheckOutWithTimeListTileState();
+}
+
+class _CheckOutWithTimeListTileState extends State<CheckOutWithTimeListTile> {
+  bool checkboxValue = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+      dense: true,
+      title: Text(
+        widget.timeText,
+        style: GoogleFonts.poppins(
+          textStyle: Theme.of(context).textTheme.titleMedium,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      controlAffinity: ListTileControlAffinity.trailing,
+      value: checkboxValue,
+      onChanged: (value) {
+        setState(() {
+          checkboxValue = value!;
+        });
+      },
+    );
+  }
+}
+
+class CheckOutCustomListTile extends StatefulWidget {
+  const CheckOutCustomListTile({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  final String text;
+
+  @override
+  State<CheckOutCustomListTile> createState() => _CheckOutCustomListTileState();
+}
+
+class _CheckOutCustomListTileState extends State<CheckOutCustomListTile> {
+  bool checkboxValue = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+      title: Text(
+        widget.text,
+        style: GoogleFonts.poppins(
+          textStyle: Theme.of(context).textTheme.titleMedium,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      controlAffinity: ListTileControlAffinity.trailing,
+      value: checkboxValue,
+      onChanged: (value) {
+        setState(() {
+          checkboxValue = value!;
+        });
+      },
+    );
+  }
+}
+
+// TODO: Change the StatefulWidget to BLoC
+class CheckInWithNameListTile extends StatefulWidget {
+  const CheckInWithNameListTile({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
+
+  final String name;
+
+  @override
+  State<CheckInWithNameListTile> createState() =>
+      _CheckInWithNameListTileState();
+}
+
+class _CheckInWithNameListTileState extends State<CheckInWithNameListTile> {
+  bool checkboxValue = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+      secondary: CircleAvatar(
+        child: Text(getInitials(widget.name)),
+        foregroundColor: kWhiteColor,
+        backgroundColor: kPrimarySwatch,
+      ),
+      title: Text(
+        widget.name,
+        style: GoogleFonts.poppins(
+          textStyle: Theme.of(context).textTheme.titleMedium,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      controlAffinity: ListTileControlAffinity.trailing,
+      value: checkboxValue,
+      onChanged: (value) {
+        setState(() {
+          checkboxValue = value!;
+        });
+      },
     );
   }
 }
