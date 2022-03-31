@@ -7,6 +7,7 @@ import 'package:mysejahtera_plus/components/button_color.dart';
 import 'package:mysejahtera_plus/helper/check_in_icons_icons.dart';
 import 'package:mysejahtera_plus/helper/constant.dart';
 import 'package:mysejahtera_plus/helper/name_initial.dart';
+import 'package:mysejahtera_plus/screens/check_in_fail_screen.dart';
 
 class CheckInQrScannerScreen extends StatefulWidget {
   const CheckInQrScannerScreen({Key? key, required this.onPressed})
@@ -79,12 +80,31 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                         MobileScanner(
                           allowDuplicates: false,
                           controller: scannerController,
-                          onDetect: (barcode, args) {
+                          onDetect: (barcode, args) async {
                             // Check for QR code
                             if (barcode.format == BarcodeFormat.qrCode) {
                               barcodeValue = barcode.rawValue!;
                               debugPrint('Barcode: $barcodeValue');
-                              checkInQrBottomSheet(context);
+
+                              // Need to check for legit mySejahtera QR
+                              // Example
+                              // https://mysejahtera.malaysia.gov.my/qrscan?lId=5fdb011c21ef3075fa4168d1&eln=TXlLYW1wdXMgUmFkaW8=&formType=REGULAR&isExternal=false
+
+                              if (barcode.rawValue!
+                                  .contains('mysejahtera.malaysia.gov.my')) {
+                                await scannerController.stop();
+                                checkInQrBottomSheet(context);
+                              } else {
+                                await scannerController.stop();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CheckInFailScreen(
+                                      scannerController: scannerController,
+                                    ),
+                                  ),
+                                );
+                              }
                             }
                           },
                         ),
@@ -155,7 +175,7 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
       builder: (context) => Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
             Align(
@@ -165,38 +185,11 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                 width: MediaQuery.of(context).size.width / 7,
               ),
             ),
-            Padding(
+            Container(
+              alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(top: 30, bottom: 10),
               child: Text(
                 'Check-in with...',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w700,
-                  textStyle: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: SizedBox(
-                height: 230,
-                child: ListView(
-                  children: const [
-                    CheckInWithNameListTile(name: 'Peter Parker'),
-                    CheckInWithNameListTile(name: 'John Parker'),
-                    CheckInWithNameListTile(name: 'Jennifer Parker'),
-                    CheckInWithNameListTile(name: 'Katie Parker'),
-                  ],
-                ),
-              ),
-            ),
-            Divider(
-              thickness: 1,
-              color: kDarkGreyColor.withOpacity(0.3),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Text(
-                'Check-out automatically after...',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
                   textStyle: Theme.of(context).textTheme.titleLarge,
@@ -207,11 +200,64 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
               height: 230,
               child: ListView(
                 children: const [
-                  CheckOutWithTimeListTile(timeText: '15 minutes'),
-                  CheckOutWithTimeListTile(timeText: '30 minutes'),
-                  CheckOutWithTimeListTile(timeText: '60 minutes'),
+                  CheckInNameListTile(name: 'Peter Parker'),
+                  CheckInNameListTile(name: 'John Parker'),
+                  CheckInNameListTile(name: 'Jennifer Parker'),
+                  CheckInNameListTile(name: 'Katie Parker'),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              color: kDarkGreyColor.withOpacity(0.3),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(top: 15, bottom: 10),
+              child: Text(
+                'Check-out automatically after...',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
+                  textStyle: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 190,
+              child: ListView(
+                children: const [
+                  CheckOutTimeListTile(timeText: '15 minutes'),
+                  CheckOutTimeListTile(timeText: '30 minutes'),
+                  CheckOutTimeListTile(timeText: '60 minutes'),
                   CheckOutCustomListTile(text: 'Custom'),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Card(
+                elevation: 5,
+                color: kPrimarySwatch,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    // TODO: Successfull check-in screen
+                    Navigator.pop(context);
+                  },
+                  child: Center(
+                    heightFactor: 1.4,
+                    child: Text(
+                      'Continue Check-In',
+                      style: GoogleFonts.poppins(
+                        color: kWhiteColor,
+                        textStyle: Theme.of(context).textTheme.headline4,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
@@ -221,8 +267,8 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
   }
 }
 
-class CheckOutWithTimeListTile extends StatefulWidget {
-  const CheckOutWithTimeListTile({
+class CheckOutTimeListTile extends StatefulWidget {
+  const CheckOutTimeListTile({
     Key? key,
     required this.timeText,
   }) : super(key: key);
@@ -230,11 +276,10 @@ class CheckOutWithTimeListTile extends StatefulWidget {
   final String timeText;
 
   @override
-  State<CheckOutWithTimeListTile> createState() =>
-      _CheckOutWithTimeListTileState();
+  State<CheckOutTimeListTile> createState() => _CheckOutTimeListTileState();
 }
 
-class _CheckOutWithTimeListTileState extends State<CheckOutWithTimeListTile> {
+class _CheckOutTimeListTileState extends State<CheckOutTimeListTile> {
   bool checkboxValue = false;
 
   @override
@@ -272,32 +317,32 @@ class CheckOutCustomListTile extends StatefulWidget {
 }
 
 class _CheckOutCustomListTileState extends State<CheckOutCustomListTile> {
-  bool checkboxValue = false;
-
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      title: Text(
-        widget.text,
-        style: GoogleFonts.poppins(
-          textStyle: Theme.of(context).textTheme.titleMedium,
-          fontWeight: FontWeight.w500,
+    return InkWell(
+      child: ListTile(
+        dense: true,
+        title: Text(
+          widget.text,
+          style: GoogleFonts.poppins(
+            textStyle: Theme.of(context).textTheme.titleMedium,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        // TODO: Implement Custom check-out time
+        onTap: () {},
+        trailing: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(Icons.arrow_forward_ios_rounded, color: kPrimarySwatch),
         ),
       ),
-      controlAffinity: ListTileControlAffinity.trailing,
-      value: checkboxValue,
-      onChanged: (value) {
-        setState(() {
-          checkboxValue = value!;
-        });
-      },
     );
   }
 }
 
 // TODO: Change the StatefulWidget to BLoC
-class CheckInWithNameListTile extends StatefulWidget {
-  const CheckInWithNameListTile({
+class CheckInNameListTile extends StatefulWidget {
+  const CheckInNameListTile({
     Key? key,
     required this.name,
   }) : super(key: key);
@@ -305,11 +350,10 @@ class CheckInWithNameListTile extends StatefulWidget {
   final String name;
 
   @override
-  State<CheckInWithNameListTile> createState() =>
-      _CheckInWithNameListTileState();
+  State<CheckInNameListTile> createState() => _CheckInNameListTileState();
 }
 
-class _CheckInWithNameListTileState extends State<CheckInWithNameListTile> {
+class _CheckInNameListTileState extends State<CheckInNameListTile> {
   bool checkboxValue = false;
 
   @override
