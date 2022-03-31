@@ -2,8 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:mysejahtera_plus/screens/check_in_in_details.dart';
-import 'package:mysejahtera_plus/screens/check_in_out_details.dart';
+import 'package:mysejahtera_plus/screens/check_in_details_screen.dart';
 import 'package:mysejahtera_plus/components/button_close.dart';
 import 'package:mysejahtera_plus/components/button_dropdown.dart';
 import 'package:mysejahtera_plus/components/text_title.dart';
@@ -61,13 +60,14 @@ class CheckInHistoryScreen extends StatelessWidget {
                       closedElevation: 0,
                       closedColor: const Color(0xFFfafafa),
                       openBuilder: (context, closedContainer) =>
-                          CheckInInDetails(
+                          CheckInDetailsScreen(
                         onPressed: closedContainer,
                         location: 'Suria KLCC',
                         name: 'Anthony Parker',
                         mySjID: 'anthonyparker@mail.com',
                         date: '30/1/2021',
                         time: '10:05:55 PM',
+                        isCheckIn: true,
                       ),
                       closedBuilder: (context, openContainer) => CheckInTiles(
                         location: 'Check-in at Suria KLCC',
@@ -84,13 +84,14 @@ class CheckInHistoryScreen extends StatelessWidget {
                       closedElevation: 0,
                       closedColor: const Color(0xFFfafafa),
                       openBuilder: (context, closedContainer) =>
-                          CheckInOutDetails(
+                          CheckInDetailsScreen(
                         onPressed: closedContainer,
                         location: 'Kedai Mamak Pelita',
                         name: 'Anthony Parker',
                         mySjID: 'anthonyparker@mail.com',
                         date: '30/1/2021',
                         time: '9:05:55 PM',
+                        isCheckIn: false,
                       ),
                       closedBuilder: (context, openContainer) => CheckInTiles(
                         location: 'Check-out at Kedai Mamak Pelita',
