@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mysejahtera_plus/helper/constant.dart';
 
-class CheckInInDetails extends StatelessWidget {
-  const CheckInInDetails({
+class CheckInDetailsScreen extends StatefulWidget {
+  const CheckInDetailsScreen({
     Key? key,
     required this.onPressed,
     required this.location,
@@ -12,6 +12,7 @@ class CheckInInDetails extends StatelessWidget {
     required this.mySjID,
     required this.date,
     required this.time,
+    required this.isCheckIn,
   }) : super(key: key);
 
   final VoidCallback onPressed;
@@ -21,6 +22,34 @@ class CheckInInDetails extends StatelessWidget {
   final String mySjID;
   final String date;
   final String time;
+  final bool isCheckIn;
+
+  @override
+  State<CheckInDetailsScreen> createState() => _CheckInDetailsScreenState();
+}
+
+class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
+  late String topCheck;
+  late String capCheck;
+  late String subCheck;
+
+  void getCheckState() {
+    if (widget.isCheckIn) {
+      topCheck = 'Check-In Details';
+      capCheck = 'CHECKED IN';
+      subCheck = 'Your check-in was recorded';
+    } else {
+      topCheck = 'Check-Out Details';
+      capCheck = 'CHECKED OUT';
+      subCheck = 'Your check-out was recorded';
+    }
+  }
+
+  @override
+  void initState() {
+    getCheckState();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +63,7 @@ class CheckInInDetails extends StatelessWidget {
                 Center(
                   heightFactor: 1.9,
                   child: Text(
-                    'Check-In Details',
+                    topCheck,
                     style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.headline6,
                       fontWeight: FontWeight.w700,
@@ -44,7 +73,7 @@ class CheckInInDetails extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
-                    onPressed: onPressed,
+                    onPressed: widget.onPressed,
                     iconSize: 40,
                     icon: const Icon(
                       Icons.keyboard_arrow_down_rounded,
@@ -66,7 +95,7 @@ class CheckInInDetails extends StatelessWidget {
               height: 15,
             ),
             Text(
-              'CHECKED IN',
+              capCheck,
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.bodyLarge,
@@ -75,7 +104,7 @@ class CheckInInDetails extends StatelessWidget {
               ),
             ),
             Text(
-              'Your check-in was recorded',
+              subCheck,
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.bodyLarge,
@@ -106,7 +135,7 @@ class CheckInInDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            location,
+                            widget.location,
                             style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
@@ -125,7 +154,7 @@ class CheckInInDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            name,
+                            widget.name,
                             style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
@@ -144,7 +173,7 @@ class CheckInInDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            mySjID,
+                            widget.mySjID,
                             style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
@@ -163,7 +192,7 @@ class CheckInInDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            date,
+                            widget.date,
                             style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
@@ -182,7 +211,7 @@ class CheckInInDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            time,
+                            widget.time,
                             style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
