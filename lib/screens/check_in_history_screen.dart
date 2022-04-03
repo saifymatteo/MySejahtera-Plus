@@ -2,13 +2,13 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:mysejahtera_plus/screens/check_in_details_screen.dart';
-import 'package:mysejahtera_plus/components/button_close.dart';
-import 'package:mysejahtera_plus/components/button_dropdown.dart';
-import 'package:mysejahtera_plus/components/text_title.dart';
-import 'package:mysejahtera_plus/components/tiles_check_in.dart';
-import 'package:mysejahtera_plus/helper/check_in_icons_icons.dart';
-import 'package:mysejahtera_plus/helper/constant.dart';
+import 'check_in_details_screen.dart';
+import '../components/button_close.dart';
+import '../components/button_dropdown.dart';
+import '../components/text_title.dart';
+import '../components/tiles_check_in_details.dart';
+import '../helper/check_in_icons_icons.dart';
+import '../helper/constant.dart';
 
 class CheckInHistoryScreen extends StatelessWidget {
   CheckInHistoryScreen({Key? key, required this.onPressed}) : super(key: key);
@@ -69,7 +69,7 @@ class CheckInHistoryScreen extends StatelessWidget {
                         time: '10:05:55 PM',
                         isCheckIn: true,
                       ),
-                      closedBuilder: (context, openContainer) => CheckInTiles(
+                      closedBuilder: (context, openContainer) => CheckInDetailsListTiles(
                         location: 'Check-in at Suria KLCC',
                         date: 'January 30, 2022',
                         iconCheckInOrOut: Icon(
@@ -93,7 +93,7 @@ class CheckInHistoryScreen extends StatelessWidget {
                         time: '9:05:55 PM',
                         isCheckIn: false,
                       ),
-                      closedBuilder: (context, openContainer) => CheckInTiles(
+                      closedBuilder: (context, openContainer) => CheckInDetailsListTiles(
                         location: 'Check-out at Kedai Mamak Pelita',
                         date: 'January 30, 2022',
                         iconCheckInOrOut: Icon(

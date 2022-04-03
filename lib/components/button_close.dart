@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mysejahtera_plus/helper/constant.dart';
+import '../helper/constant.dart';
 
 class ButtonClose extends StatelessWidget {
   const ButtonClose({

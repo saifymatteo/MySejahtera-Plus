@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:mysejahtera_plus/helper/constant.dart';
+import '../helper/constant.dart';
 
 class CheckInDetailsScreen extends StatefulWidget {
   const CheckInDetailsScreen({
