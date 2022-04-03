@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-import 'package:mysejahtera_plus/components/button_color.dart';
-import 'package:mysejahtera_plus/helper/constant.dart';
+import '../components/button_color.dart';
+import '../helper/constant.dart';
 
 class CheckInFailScreen extends StatelessWidget {
   const CheckInFailScreen({
@@ -18,16 +19,27 @@ class CheckInFailScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 Icons.warning_rounded,
-                color: kPrimarySwatch,
+                color: kVaccinatedNot,
+                size: MediaQuery.of(context).size.width / 2,
               ),
-              const Text('Invalid QR'),
+              Text(
+                'Invalid QR',
+                style: GoogleFonts.poppins(
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
+                  color: kDarkGreyColor.withOpacity(0.5),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               ButtonColor(
                 text: 'Close',
                 onPressed: () async {
-                  scannerController.start();
+                  await scannerController.start();
                   Navigator.pop(context);
                 },
               ),
