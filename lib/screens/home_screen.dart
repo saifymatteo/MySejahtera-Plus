@@ -1,12 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:mysejahtera_plus/helper/constant.dart';
+import 'package:mysejahtera_plus/components/text_title.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({ Key? key }) : super(key: key);
+  HomeScreen({ Key? key }) : super(key: key);
+
+  // TODO: Rework on the date later
+  final DateTime currentDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Home'),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // TODO: Implement global variable for date.
+            Text(
+              DateFormat('MMMM d, EEEE').format(currentDate),
+              style: TextStyle(color: kPrimarySwatch),
+            ),
+            const TextTitle(
+              title: 'MySejahtera',
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -13,7 +13,7 @@ import 'screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
-  // ! TODO: Remove device preview later
+  //! TODO: Remove device preview later
   // runApp(DevicePreview(
   //     builder: (context) => const MyApp()));
 }
@@ -126,8 +126,8 @@ class _MainComponentState extends State<MainComponent> {
 }
 
 List<Widget> screenOptions = <Widget>[
-  const HomeScreen(),
-  const StatisticScreen(),
+  HomeScreen(),
+  StatisticScreen(),
   CheckInScreen(),
-  const ProfileScreen(),
+  ProfileScreen(),
 ];
