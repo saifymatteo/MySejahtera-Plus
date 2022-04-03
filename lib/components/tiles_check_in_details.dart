@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:mysejahtera_plus/helper/constant.dart';
+import '../helper/constant.dart';
 
-class CheckInTiles extends StatelessWidget {
-  const CheckInTiles({
+class CheckInDetailsListTiles extends StatelessWidget {
+  const CheckInDetailsListTiles({
     Key? key,
     required this.onPressed,
     required this.iconCheckInOrOut,
