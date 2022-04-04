@@ -55,7 +55,9 @@ class CardLastCheckIn extends StatelessWidget {
                   ),
                   ButtonColor(
                     text: 'Check-out',
-                    onPressed: () {},
+                    onPressed: () {
+                      debugPrint('onPressed: ButtonColor(\'Check-out\')');
+                    },
                   ),
                 ],
               ),
