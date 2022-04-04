@@ -15,5 +15,10 @@ Color kVaccinatedNot = const Color(0xFFdc5d5d);
 Color kRiskStatusGreen = const Color(0xFF6ad782);
 Color kRiskStatusRed = const Color(0xFFdc5d5d);
 
+Color kStatisticRed = const Color(0xffe25c60);
+Color kStatisticGreen = const Color(0xff84e679);
+Color kStatisticGrey = const Color(0xffbab1b3);
+Color kStatisticOrange = const Color(0xfff6ae64);
+
 MaterialColor kPrimarySwatchTheme =
     createMaterialColor(const Color(0xFF4a5bf1));
