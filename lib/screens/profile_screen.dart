@@ -11,23 +11,26 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // TODO: Implement global variable for date.
-            Text(
-              DateFormat('MMMM d, EEEE').format(currentDate),
-              style: TextStyle(color: kPrimarySwatch),
-            ),
-            const TextTitle(
-              title: 'Profile',
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // TODO: Implement global variable for date.
+              Text(
+                DateFormat('MMMM d, EEEE').format(currentDate),
+                style: TextStyle(color: kPrimarySwatch),
+              ),
+              const TextTitle(
+                title: 'Profile',
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
