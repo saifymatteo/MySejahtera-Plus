@@ -49,9 +49,10 @@ class StatisticScreen extends StatelessWidget {
           SizedBox(
             height: 390,
             child: GridView.count(
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
               crossAxisCount: 2,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 // TODO: Change info based on ButtonOutline.
                 // Maybe can use IndexedState widget.

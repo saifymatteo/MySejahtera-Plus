@@ -12,12 +12,14 @@ class TextTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title,
-        style: GoogleFonts.poppins(
-          textStyle: Theme.of(context).textTheme.headline4,
-          color: kPrimarySwatch,
-          fontWeight: FontWeight.w600,
-          height: 1.2,
-        ));
+    return Text(
+      title,
+      style: GoogleFonts.poppins(
+        textStyle: Theme.of(context).textTheme.headline4,
+        color: kPrimarySwatch,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+      ),
+    );
   }
 }

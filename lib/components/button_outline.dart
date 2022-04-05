@@ -15,9 +15,7 @@ class ButtonOutline extends StatelessWidget {
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: OutlinedButton(
         onPressed: () {},
-        child: Text(
-          text,
-        ),
+        child: Text(text),
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(kDarkGreyColor),
           side: MaterialStateProperty.all(
