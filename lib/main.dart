@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
         ],
       ),
       debugShowCheckedModeBanner: false,
-      // showPerformanceOverlay: true,
       title: 'MySejahtera Plus',
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
@@ -75,7 +74,6 @@ class _MainComponentState extends State<MainComponent> {
             });
           },
         ),
-        minimum: const EdgeInsets.only(left: 15, right: 15, top: 40),
       ),
       bottomNavigationBar: Material(
         elevation: 5,
