@@ -88,6 +88,7 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                               if (barcode.rawValue!
                                   .contains('mysejahtera.malaysia.gov.my')) {
                                 await scannerController.stop();
+                                Navigator.pop(context);
                                 checkInQrBottomSheet(context);
                               } else {
                                 await scannerController.stop();

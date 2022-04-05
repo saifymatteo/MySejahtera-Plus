@@ -38,8 +38,7 @@ class CheckInFailScreen extends StatelessWidget {
               ),
               ButtonColor(
                 text: 'Close',
-                onPressed: () async {
-                  await scannerController.start();
+                onPressed: () {
                   Navigator.pop(context);
                 },
               ),
