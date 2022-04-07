@@ -1,18 +1,30 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysejahtera_plus/components/statistics_global.dart';
+import 'package:mysejahtera_plus/components/statistics_states.dart';
 import 'package:mysejahtera_plus/helper/constant.dart';
 import 'package:intl/intl.dart';
 
 import '../components/button_outline.dart';
-import '../components/card_statistics.dart';
+import '../components/statistics_updates.dart';
 import '../components/text_title.dart';
 
-class StatisticScreen extends StatelessWidget {
-  StatisticScreen({Key? key}) : super(key: key);
+class StatisticScreen extends StatefulWidget {
+  const StatisticScreen({Key? key}) : super(key: key);
 
+  @override
+  State<StatisticScreen> createState() => _StatisticScreenState();
+}
+
+class _StatisticScreenState extends State<StatisticScreen> {
   // TODO: Rework on the date later
   final DateTime currentDate = DateTime.now();
+
+  int statisticsState = 0;
+  bool isUpdate = true;
+  bool isStates = false;
+  bool isGlobal = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,67 +51,58 @@ class StatisticScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: const [
-                ButtonOutline(text: 'Covid-19 Update'),
-                ButtonOutline(text: 'Covid-19 States'),
-                ButtonOutline(text: 'Covid-19 Global'),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 390,
-            child: GridView.count(
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 5,
-              crossAxisCount: 2,
-              physics: const NeverScrollableScrollPhysics(),
               children: [
-                // TODO: Change info based on ButtonOutline.
-                // Maybe can use IndexedState widget.
-                CardStatistics(
-                  cardColor: kStatisticRed,
-                  header: 'Total Confirmed Cases',
-                  totalText: '2,323,478',
-                  plusOrMinus: Icons.add_rounded,
-                  numberTodayText: '9751',
-                  upOrDown: Icons.arrow_downward_rounded,
-                  percentage: '12',
-                  date: '29 Jan, 2022, 11:59 PM',
+                ButtonOutline(
+                  text: 'Covid-19 Update',
+                  isSelected: isUpdate,
+                  onPressed: () {
+                    setState(() {
+                      statisticsState = 0;
+                      isUpdate = true;
+                      isStates = false;
+                      isGlobal = false;
+                    });
+                  },
                 ),
-                CardStatistics(
-                  cardColor: kStatisticGreen,
-                  header: 'Total Recovered',
-                  totalText: '2,170,288',
-                  plusOrMinus: Icons.add_rounded,
-                  numberTodayText: '12723',
-                  upOrDown: Icons.arrow_upward_rounded,
-                  percentage: '8',
-                  date: '29 Jan, 2022, 11:59 PM',
+                ButtonOutline(
+                  text: 'Covid-19 States',
+                  isSelected: isStates,
+                  onPressed: () {
+                    setState(() {
+                      statisticsState = 1;
+                      isUpdate = false;
+                      isStates = true;
+                      isGlobal = false;
+                    });
+                  },
                 ),
-                CardStatistics(
-                  cardColor: kStatisticGrey,
-                  header: 'Total Death',
-                  totalText: '27,191',
-                  plusOrMinus: Icons.add_rounded,
-                  numberTodayText: '78',
-                  upOrDown: Icons.arrow_downward_rounded,
-                  percentage: '3',
-                  date: '29 Jan, 2022, 11:59 PM',
-                ),
-                CardStatistics(
-                  cardColor: kStatisticOrange,
-                  header: 'Total Active Cases',
-                  totalText: '125,999',
-                  plusOrMinus: Icons.remove_rounded,
-                  numberTodayText: '9751',
-                  upOrDown: Icons.arrow_upward_rounded,
-                  percentage: '12',
-                  date: '29 Jan, 2022, 11:59 PM',
+                ButtonOutline(
+                  text: 'Covid-19 Global',
+                  isSelected: isGlobal,
+                  onPressed: () {
+                    setState(() {
+                      statisticsState = 2;
+                      isUpdate = false;
+                      isStates = false;
+                      isGlobal = true;
+                    });
+                  },
                 ),
               ],
             ),
           ),
-          Align(
+          Expanded(
+            child: IndexedStack(
+              index: statisticsState,
+              children: const [
+                StatisticsUpdates(),
+                StatisticsStates(),
+                StatisticsGlobal()
+              ],
+            ),
+          ),
+          Container(
+            height: 40,
             alignment: Alignment.center,
             child: RichText(
               text: TextSpan(

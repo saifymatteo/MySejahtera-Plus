@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysejahtera_plus/components/tiles_item.dart';
 
 import '../helper/constant.dart';
 
@@ -29,19 +30,13 @@ class CheckInDetailsScreen extends StatefulWidget {
 }
 
 class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
-  late String topCheck;
-  late String capCheck;
-  late String subCheck;
+  late String checkState;
 
   void getCheckState() {
     if (widget.isCheckIn) {
-      topCheck = 'Check-In Details';
-      capCheck = 'CHECKED IN';
-      subCheck = 'Your check-in was recorded';
+      checkState = 'In';
     } else {
-      topCheck = 'Check-Out Details';
-      capCheck = 'CHECKED OUT';
-      subCheck = 'Your check-out was recorded';
+      checkState = 'Out';
     }
   }
 
@@ -63,7 +58,8 @@ class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
                 Center(
                   heightFactor: 1.9,
                   child: Text(
-                    topCheck,
+                    // topCheck,
+                    'Check-$checkState Details',
                     style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.headline6,
                       fontWeight: FontWeight.w700,
@@ -95,7 +91,8 @@ class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
               height: 15,
             ),
             Text(
-              capCheck,
+              // capCheck,
+              'CHECKED ${checkState.toUpperCase()}',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.bodyLarge,
@@ -104,7 +101,8 @@ class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
               ),
             ),
             Text(
-              subCheck,
+              // subCheck,
+              'Your check-${checkState.toLowerCase()} was recorded',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.bodyLarge,
@@ -125,100 +123,25 @@ class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListTile(
-                          dense: true,
-                          title: Text(
-                            'LOCATION',
-                            style: GoogleFonts.poppins(
-                              textStyle: Theme.of(context).textTheme.titleSmall,
-                              color: kDarkGreyColor.withOpacity(0.5),
-                            ),
-                          ),
-                          subtitle: Text(
-                            widget.location,
-                            style: GoogleFonts.poppins(
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium,
-                              color: kDarkGreyColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ItemListTiles(
+                          title: 'LOCATION',
+                          item: widget.location,
                         ),
-                        ListTile(
-                          dense: true,
-                          title: Text(
-                            'NAME',
-                            style: GoogleFonts.poppins(
-                              textStyle: Theme.of(context).textTheme.titleSmall,
-                              color: kDarkGreyColor.withOpacity(0.5),
-                            ),
-                          ),
-                          subtitle: Text(
-                            widget.name,
-                            style: GoogleFonts.poppins(
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium,
-                              color: kDarkGreyColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ItemListTiles(
+                          title: 'NAME',
+                          item: widget.name,
                         ),
-                        ListTile(
-                          dense: true,
-                          title: Text(
-                            'MYSEJAHTERA ID',
-                            style: GoogleFonts.poppins(
-                              textStyle: Theme.of(context).textTheme.titleSmall,
-                              color: kDarkGreyColor.withOpacity(0.5),
-                            ),
-                          ),
-                          subtitle: Text(
-                            widget.mySjID,
-                            style: GoogleFonts.poppins(
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium,
-                              color: kDarkGreyColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ItemListTiles(
+                          title: 'MYSEJAHTERA ID',
+                          item: widget.mySjID,
                         ),
-                        ListTile(
-                          dense: true,
-                          title: Text(
-                            'DATE',
-                            style: GoogleFonts.poppins(
-                              textStyle: Theme.of(context).textTheme.titleSmall,
-                              color: kDarkGreyColor.withOpacity(0.5),
-                            ),
-                          ),
-                          subtitle: Text(
-                            widget.date,
-                            style: GoogleFonts.poppins(
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium,
-                              color: kDarkGreyColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ItemListTiles(
+                          title: 'DATE',
+                          item: widget.date,
                         ),
-                        ListTile(
-                          dense: true,
-                          title: Text(
-                            'TIME',
-                            style: GoogleFonts.poppins(
-                              textStyle: Theme.of(context).textTheme.titleSmall,
-                              color: kDarkGreyColor.withOpacity(0.5),
-                            ),
-                          ),
-                          subtitle: Text(
-                            widget.time,
-                            style: GoogleFonts.poppins(
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium,
-                              color: kDarkGreyColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ItemListTiles(
+                          title: 'TIME',
+                          item: widget.time,
                         ),
                       ],
                     ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:mysejahtera_plus/components/bottom_sheet_tools_and_services.dart';
 import 'package:mysejahtera_plus/helper/constant.dart';
 import 'package:mysejahtera_plus/components/text_title.dart';
 
 import '../components/button_card_activity_feed.dart';
 import '../components/card_tools_and_services.dart';
+import '../components/text_sub_title.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -36,16 +38,11 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Tools and Services',
-                style: GoogleFonts.poppins(
-                  textStyle: Theme.of(context).textTheme.titleLarge,
-                  color: kDarkGreyColor,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              const TextSubTitle(title: 'Tools and Services'),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  toolsAndServicesBottomSheet(context);
+                },
                 child: Text(
                   'Show all',
                   style: GoogleFonts.poppins(
@@ -59,11 +56,11 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 210,
             child: GridView.count(
-              crossAxisCount: 3,
+              crossAxisCount: 2,
               mainAxisSpacing: 5,
               crossAxisSpacing: 5,
-              childAspectRatio: 5 / 4,
-              physics: const NeverScrollableScrollPhysics(),
+              childAspectRatio: 5 / 5.9,
+              scrollDirection: Axis.horizontal,
               children: [
                 CardToolsAndServices(
                   text: 'Covid-19\nSelf Test',
@@ -89,19 +86,44 @@ class HomeScreen extends StatelessWidget {
                   text: 'Manage\nDependents',
                   onTap: () {},
                 ),
+                CardToolsAndServices(
+                  text: 'Covid-19\nRisk Status',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'Behavioural\nRisk',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'Digital\nHealthcare',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'From\nTravelling',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'Additional\nResources',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'SOP\nGuideline',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'Helpdesk\nCentre',
+                  onTap: () {},
+                ),
+                CardToolsAndServices(
+                  text: 'Frequently\nAsk Question',
+                  onTap: () {},
+                ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Text(
-              'Covid-19 Latest News',
-              style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.titleLarge,
-                color: kDarkGreyColor,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+          const Padding(
+            padding: EdgeInsets.only(top: 10, bottom: 10),
+            child: TextSubTitle(title: 'Covid-19 Latest News'),
           ),
           Expanded(
             child: ListView(
