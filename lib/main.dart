@@ -14,8 +14,7 @@ import 'screens/profile_screen.dart';
 void main() {
   runApp(const MyApp());
   //! TODO: Remove device preview later
-  // runApp(DevicePreview(
-  //     builder: (context) => const MyApp()));
+  // runApp(DevicePreview(builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -125,7 +124,7 @@ class _MainComponentState extends State<MainComponent> {
 
 List<Widget> screenOptions = <Widget>[
   HomeScreen(),
-  StatisticScreen(),
+  const StatisticScreen(),
   CheckInScreen(),
   ProfileScreen(),
 ];
