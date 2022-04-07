@@ -1,5 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysejahtera_plus/screens/vaccination_screen.dart';
 
 import '../helper/constant.dart';
 
@@ -63,10 +65,36 @@ class CardVaccinated extends StatelessWidget {
                                     Theme.of(context).textTheme.headlineSmall,
                               ),
                             ),
-                            Icon(
-                              Icons.info,
-                              color: kWhiteColor,
-                            )
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const VaccinationScreen(
+                                              name:
+                                                  'Anthony Parker William Smith',
+                                              idNumber: '990808-08-8899',
+                                              dose1Manufacturer:
+                                                  'Pfizer-BioNTech',
+                                              dose1Date: '8/12/2021',
+                                              dose1Batch: 'A001',
+                                              dose1Location:
+                                                  'Stadium Bukit Jalil',
+                                              dose2Manufacturer:
+                                                  'Pfizer-BioNTech',
+                                              dose2Date: '31/12/2021',
+                                              dose2Batch: 'A030',
+                                              dose2Location:
+                                                  'Stadium Bukit Jalil',
+                                            )));
+                              },
+                              child: Icon(
+                                Icons.info,
+                                color: kWhiteColor,
+                                size: 30,
+                              ),
+                            ),
                           ],
                         ),
                         Column(
