@@ -32,9 +32,10 @@ dependencies:
   salomon_bottom_bar: ^3.3.0 # Bottom navigation bar - https://pub.dev/packages/salomon_bottom_bar
   dropdown_button2: ^1.2.2 # Better dropdown menu - https://pub.dev/packages/dropdown_button2
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
+  responsive_framework: ^0.1.7 # Easy responsive UI - https://pub.dev/packages/responsive_framework
+  qr_flutter: ^4.0.0 # Generate QR code - https://pub.dev/packages/qr_flutter
   # TODO: QR code iOS configuration
   mobile_scanner: ^1.0.0 # QR code scanner - https://pub.dev/packages/mobile_scanner
-  responsive_framework: ^0.1.7 # Easy responsive UI - https://pub.dev/packages/responsive_framework
 
 dev_dependencies:
   flutter_test:
