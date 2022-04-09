@@ -11,7 +11,7 @@ class StatisticsStates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
+      children: const [
         StatisticsStatesItems(
           titleText: 'Johor',
           // TOP LEFT

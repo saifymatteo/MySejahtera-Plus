@@ -39,7 +39,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
               // TODO: Implement global variable for date.
               Text(
                 DateFormat('MMMM d, EEEE').format(currentDate),
-                style: TextStyle(color: kPrimarySwatch),
+                style: const TextStyle(color: kPrimarySwatch),
               ),
               const TextTitle(
                 title: 'Statistics',

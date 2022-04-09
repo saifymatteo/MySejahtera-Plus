@@ -15,8 +15,8 @@ class ButtonClose extends StatelessWidget {
     return Ink(
       width: 40,
       height: 40,
-      decoration: ShapeDecoration(
-        shape: const CircleBorder(),
+      decoration: const ShapeDecoration(
+        shape: CircleBorder(),
         color: kPrimarySwatch,
       ),
       child: IconButton(

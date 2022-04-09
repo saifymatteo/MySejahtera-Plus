@@ -8,7 +8,6 @@ import '../components/button_dropdown.dart';
 import '../components/text_title.dart';
 import '../components/tiles_check_in_details.dart';
 import '../helper/check_in_icons_icons.dart';
-import '../helper/constant.dart';
 
 class CheckInHistoryScreen extends StatelessWidget {
   CheckInHistoryScreen({Key? key, required this.onPressed}) : super(key: key);

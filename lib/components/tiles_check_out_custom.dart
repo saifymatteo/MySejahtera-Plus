@@ -29,8 +29,8 @@ class _CheckOutCustomListTileState extends State<CheckOutCustomListTile> {
         ),
         // TODO: Implement Custom check-out time
         onTap: () {},
-        trailing: Padding(
-          padding: const EdgeInsets.all(8),
+        trailing: const Padding(
+          padding: EdgeInsets.all(8),
           child: Icon(Icons.arrow_forward_ios_rounded, color: kPrimarySwatch),
         ),
       ),

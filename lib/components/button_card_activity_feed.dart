@@ -25,7 +25,7 @@ class ButtonCardActivityFeed extends StatelessWidget {
         onPressed: () {},
         style: ButtonStyle(
           side: MaterialStateProperty.all(
-            BorderSide(color: kPrimarySwatch),
+            const BorderSide(color: kPrimarySwatch),
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(

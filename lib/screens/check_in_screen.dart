@@ -31,7 +31,7 @@ class CheckInScreen extends StatelessWidget {
               // TODO: Implement global variable for date.
               Text(
                 DateFormat('MMMM d, EEEE').format(currentDate),
-                style: TextStyle(color: kPrimarySwatch),
+                style: const TextStyle(color: kPrimarySwatch),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

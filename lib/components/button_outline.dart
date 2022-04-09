@@ -26,7 +26,7 @@ class ButtonOutline extends StatelessWidget {
           side: isSelected
               ? null
               : MaterialStateProperty.all(
-                  BorderSide(color: kPrimarySwatch),
+                  const BorderSide(color: kPrimarySwatch),
                 ),
           backgroundColor: isSelected
               ? MaterialStateProperty.all(kPrimarySwatch.withOpacity(0.2))

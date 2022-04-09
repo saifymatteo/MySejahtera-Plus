@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mysejahtera_plus/screens/vaccination_screen.dart';
@@ -89,7 +88,7 @@ class CardVaccinated extends StatelessWidget {
                                                   'Stadium Bukit Jalil',
                                             )));
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.info,
                                 color: kWhiteColor,
                                 size: 30,
@@ -110,7 +109,7 @@ class CardVaccinated extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Text(
+                            const Text(
                               'Completed 1st dose on 31/12/2021',
                               style: TextStyle(
                                 color: kWhiteColor,
@@ -127,7 +126,7 @@ class CardVaccinated extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
-                children: [
+                children: const [
                   Text(
                     'Anthony Parker',
                     style: TextStyle(color: kWhiteColor),

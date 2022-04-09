@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../components/button_close.dart';
-import '../components/button_color.dart';
 import '../helper/check_in_icons_icons.dart';
 import '../helper/constant.dart';
 import 'check_in_fail_screen.dart';
@@ -36,8 +35,8 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                 alignment: Alignment.topLeft,
                 child: ButtonClose(onPressed: widget.onPressed),
               ),
-              Padding(
-                padding: const EdgeInsets.all(20),
+              const Padding(
+                padding: EdgeInsets.all(20),
                 child: Icon(
                   CheckInIcons.scanIcon,
                   color: kPrimarySwatch,
@@ -127,14 +126,12 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
                                 builder: (context, state, child) {
                                   switch (state as TorchState) {
                                     case TorchState.off:
-                                      return Icon(
-                                        // Icons.flash_on_rounded,
+                                      return const Icon(
                                         Icons.flashlight_on_rounded,
                                         color: kWhiteColor,
                                       );
                                     case TorchState.on:
                                       return Icon(
-                                        // Icons.flash_off_rounded,
                                         Icons.flashlight_off_rounded,
                                         color: kWhiteColor.withOpacity(0.7),
                                       );

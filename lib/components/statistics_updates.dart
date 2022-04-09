@@ -15,7 +15,7 @@ class StatisticsUpdates extends StatelessWidget {
       crossAxisSpacing: 5,
       crossAxisCount: 2,
       childAspectRatio: 4 / 4,
-      children: [
+      children: const [
         CardStatistics(
           cardColor: kStatisticRed,
           header: 'Total Confirmed Cases',

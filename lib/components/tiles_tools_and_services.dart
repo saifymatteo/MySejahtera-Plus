@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../helper/constant.dart';
-
 class ToolsAndServicesListTiles extends StatelessWidget {
   const ToolsAndServicesListTiles({
     Key? key,
