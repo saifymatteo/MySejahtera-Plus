@@ -81,9 +81,11 @@ class _CheckInDetailsScreenState extends State<CheckInDetailsScreen> {
             Container(
               width: 120,
               height: 120,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('asset/images/check_in.png'),
+                  image: AssetImage(
+                    widget.isCheckIn == true ? kIconCheckIn : kIconCheckOut,
+                  ),
                 ),
               ),
             ),

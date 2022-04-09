@@ -69,14 +69,11 @@ class CheckInHistoryScreen extends StatelessWidget {
                         time: '10:05:55 PM',
                         isCheckIn: true,
                       ),
-                      closedBuilder: (context, openContainer) => CheckInDetailsListTiles(
+                      closedBuilder: (context, openContainer) =>
+                          CheckInDetailsListTiles(
                         location: 'Check-in at Suria KLCC',
                         date: 'January 30, 2022',
-                        iconCheckInOrOut: Icon(
-                          CheckInIcons.checkin,
-                          color: kWhiteColor,
-                          size: 30,
-                        ),
+                        iconCheckInOrOut: CheckInIcons.checkin,
                         onPressed: openContainer,
                       ),
                     ),
@@ -93,14 +90,11 @@ class CheckInHistoryScreen extends StatelessWidget {
                         time: '9:05:55 PM',
                         isCheckIn: false,
                       ),
-                      closedBuilder: (context, openContainer) => CheckInDetailsListTiles(
+                      closedBuilder: (context, openContainer) =>
+                          CheckInDetailsListTiles(
                         location: 'Check-out at Kedai Mamak Pelita',
                         date: 'January 30, 2022',
-                        iconCheckInOrOut: Icon(
-                          CheckInIcons.checkout,
-                          color: kWhiteColor,
-                          size: 30,
-                        ),
+                        iconCheckInOrOut: CheckInIcons.checkout,
                         onPressed: openContainer,
                       ),
                     ),

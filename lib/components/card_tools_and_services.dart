@@ -7,10 +7,12 @@ class CardToolsAndServices extends StatelessWidget {
   const CardToolsAndServices({
     Key? key,
     required this.text,
+    required this.assetImage,
     this.onTap,
   }) : super(key: key);
 
   final String text;
+  final String assetImage;
   final void Function()? onTap;
 
   @override
@@ -32,8 +34,9 @@ class CardToolsAndServices extends StatelessWidget {
                 width: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: kPrimarySwatch,
-                  // image: DecorationImage(image: AssetImage('assetName'))
+                  image: DecorationImage(
+                    image: AssetImage(assetImage),
+                  ),
                 ),
               ),
               Text(

@@ -13,7 +13,7 @@ class CheckInDetailsListTiles extends StatelessWidget {
   }) : super(key: key);
 
   final VoidCallback onPressed;
-  final Icon iconCheckInOrOut;
+  final IconData iconCheckInOrOut;
   final String location;
   final String date;
 
@@ -27,7 +27,11 @@ class CheckInDetailsListTiles extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               color: kPrimarySwatch, borderRadius: BorderRadius.circular(10)),
-          child: iconCheckInOrOut,
+          child: Icon(
+            iconCheckInOrOut,
+            color: kWhiteColor,
+            size: 30,
+          ),
         ),
         title: Text(
           location,

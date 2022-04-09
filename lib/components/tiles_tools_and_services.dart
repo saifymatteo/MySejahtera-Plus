@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,9 +7,11 @@ class ToolsAndServicesListTiles extends StatelessWidget {
   const ToolsAndServicesListTiles({
     Key? key,
     required this.text,
+    required this.assetImage,
   }) : super(key: key);
 
   final String text;
+  final String assetImage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,7 @@ class ToolsAndServicesListTiles extends StatelessWidget {
         width: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: kPrimarySwatch,
-          // image: DecorationImage(image: AssetImage('assetName'))
+          image: DecorationImage(image: AssetImage(assetImage)),
         ),
       ),
       title: Text(

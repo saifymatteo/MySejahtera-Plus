@@ -64,58 +64,72 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CardToolsAndServices(
                   text: 'Covid-19\nSelf Test',
+                  assetImage: kIconSelfTest,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Covid-19\nVaccination',
+                  assetImage: kIconVaccine,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Covid-19\nHotspots',
+                  assetImage: kIconHotspot,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Health\nFacilities',
+                  assetImage: kIconHealthFacilities,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Healthcare\nSupport',
+                  assetImage: kIconHealthSupport,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Manage\nDependents',
+                  assetImage: kIconDependent,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Covid-19\nRisk Status',
+                  assetImage: kIconRiskStatus,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Behavioural\nRisk',
+                  assetImage: kIconBehavior,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Digital\nHealthcare',
+                  assetImage: kIconDigitalHealth,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'From\nTravelling',
+                  assetImage: kIconTravel,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Additional\nResources',
+                  assetImage: kIconResources,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'SOP\nGuideline',
+                  assetImage: kIconSOP,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Helpdesk\nCentre',
+                  assetImage: kIconHelpdesk,
                   onTap: () {},
                 ),
                 CardToolsAndServices(
                   text: 'Frequently\nAsk Question',
+                  assetImage: kIconFAQ,
                   onTap: () {},
                 ),
               ],
