@@ -126,5 +126,5 @@ List<Widget> screenOptions = <Widget>[
   HomeScreen(),
   const StatisticScreen(),
   CheckInScreen(),
-  ProfileScreen(),
+  const ProfileScreen(),
 ];
