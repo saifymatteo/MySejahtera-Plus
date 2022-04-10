@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
           const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
         ],
       ),
-      debugShowCheckedModeBanner: false,
       title: 'MySejahtera Plus',
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
