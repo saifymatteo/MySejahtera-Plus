@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mysejahtera_plus/screens/profile_settings_screen.dart';
 import '../components/card_risk_status_qr.dart';
 import '../components/card_vaccination_certificate.dart';
 import '../helper/constant.dart';
@@ -62,7 +63,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ButtonColor(
                     text: 'Settings',
                     onPressed: () {
-                      debugPrint('onPressed: ButtonColor(\'Settings\')');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfileSettingScreen(),
+                        ),
+                      );
                     },
                   ),
                 ],
