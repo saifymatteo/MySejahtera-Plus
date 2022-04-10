@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:mysejahtera_plus/screens/question_screen.dart';
 import '../components/bottom_sheet_tools_and_services.dart';
 import '../helper/constant.dart';
 import '../components/text_title.dart';
@@ -114,7 +115,15 @@ class HomeScreen extends StatelessWidget {
                       CardToolsAndServices(
                         text: 'Covid-19\nRisk Status',
                         assetImage: kIconRiskStatus,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const QuestionScreen(title: 'Status'),
+                            ),
+                          );
+                        },
                       ),
                       CardToolsAndServices(
                         text: 'Behavioural\nRisk',
