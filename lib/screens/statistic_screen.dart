@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mysejahtera_plus/components/statistics_global.dart';
-import 'package:mysejahtera_plus/components/statistics_states.dart';
-import 'package:mysejahtera_plus/helper/constant.dart';
+import '../components/statistics_global.dart';
+import '../components/statistics_states.dart';
+import '../helper/constant.dart';
 import 'package:intl/intl.dart';
 
 import '../components/button_outline.dart';

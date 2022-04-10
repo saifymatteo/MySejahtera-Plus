@@ -2,12 +2,12 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'check_in_details_screen.dart';
 import '../components/button_close.dart';
 import '../components/button_dropdown.dart';
 import '../components/text_title.dart';
 import '../components/tiles_check_in_details.dart';
 import '../helper/check_in_icons_icons.dart';
+import 'check_in_details_screen.dart';
 
 class CheckInHistoryScreen extends StatelessWidget {
   CheckInHistoryScreen({Key? key, required this.onPressed}) : super(key: key);

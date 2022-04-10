@@ -6,7 +6,7 @@ import '../components/button_close.dart';
 import '../helper/check_in_icons_icons.dart';
 import '../helper/constant.dart';
 import 'check_in_fail_screen.dart';
-import 'package:mysejahtera_plus/components/bottom_sheet_check_in_qr.dart';
+import '../components/bottom_sheet_check_in_qr.dart';
 
 class CheckInQrScannerScreen extends StatefulWidget {
   const CheckInQrScannerScreen({Key? key, required this.onPressed})

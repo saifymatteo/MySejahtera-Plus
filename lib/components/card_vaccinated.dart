@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mysejahtera_plus/screens/vaccination_screen.dart';
+import '../screens/vaccination_screen.dart';
 
 import '../helper/constant.dart';
 

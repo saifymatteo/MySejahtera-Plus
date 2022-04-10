@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mysejahtera_plus/components/tiles_item.dart';
+import '../components/tiles_item.dart';
 
 import '../helper/constant.dart';
 

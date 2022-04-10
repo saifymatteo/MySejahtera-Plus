@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:mysejahtera_plus/components/bottom_sheet_tools_and_services.dart';
-import 'package:mysejahtera_plus/helper/constant.dart';
-import 'package:mysejahtera_plus/components/text_title.dart';
+import '../components/bottom_sheet_tools_and_services.dart';
+import '../helper/constant.dart';
+import '../components/text_title.dart';
 
 import '../components/button_card_activity_feed.dart';
 import '../components/card_tools_and_services.dart';

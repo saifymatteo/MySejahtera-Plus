@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mysejahtera_plus/components/text_title.dart';
+import '../components/text_title.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../components/button_close.dart';
