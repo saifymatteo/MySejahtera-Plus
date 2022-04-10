@@ -636,6 +636,7 @@ class StatisticsStates extends StatelessWidget {
           bottomRightPercentage: '12',
           bottomRightDate: '29 Jan, 2022, 11:59 PM',
         ),
+        
       ],
     );
   }

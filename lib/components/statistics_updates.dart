@@ -56,6 +56,7 @@ class StatisticsUpdates extends StatelessWidget {
           percentage: '12',
           date: '29 Jan, 2022, 11:59 PM',
         ),
+        SizedBox(height: 10),
       ],
     );
   }
