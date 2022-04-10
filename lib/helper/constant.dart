@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'material_color_converter.dart';
 
 const Color kWhiteColor = Color(0xFFFFFFFF);
+const Color kBackgroundColor = Color(0xfffafafa);
 const Color kDarkWhiteColor = Color(0xFFf3f4f9);
 const Color kDarkGreyColor = Color(0xFF2C2C2C);
 const Color kPrimarySwatch = Color(0xFF4a5bf1);

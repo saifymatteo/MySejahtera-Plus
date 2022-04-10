@@ -35,6 +35,7 @@ class ButtonVaccineCard extends StatelessWidget {
         ],
       ),
       style: TextButton.styleFrom(
+        primary: kPrimarySwatch,
         backgroundColor: kWhiteColor,
         padding: const EdgeInsets.all(10),
         shape: RoundedRectangleBorder(

@@ -29,22 +29,26 @@ class CardToolsAndServices extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                    image: AssetImage(assetImage),
+              Expanded(
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                      image: AssetImage(assetImage),
+                    ),
                   ),
                 ),
               ),
-              Text(
-                text,
-                style: GoogleFonts.poppins(
-                  textStyle: Theme.of(context).textTheme.bodySmall,
-                  color: kDarkGreyColor,
-                  fontWeight: FontWeight.w600,
+              Expanded(
+                child: Text(
+                  text,
+                  style: GoogleFonts.poppins(
+                    textStyle: Theme.of(context).textTheme.bodySmall,
+                    color: kDarkGreyColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],

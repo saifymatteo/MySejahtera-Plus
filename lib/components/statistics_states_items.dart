@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysejahtera_plus/helper/constant.dart';
 
 import 'card_statistics.dart';
 import 'text_sub_title.dart';
@@ -85,8 +86,15 @@ class StatisticsStatesItems extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(6),
+          margin: const EdgeInsets.fromLTRB(5, 15, 5, 15),
           alignment: Alignment.center,
-          child: TextSubTitle(title: titleText),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 1, color: kPrimarySwatch)),
+          child: TextSubTitle(
+            title: titleText,
+            color: kPrimarySwatch,
+          ),
         ),
         GridView.count(
           mainAxisSpacing: 5,

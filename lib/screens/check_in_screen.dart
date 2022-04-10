@@ -65,6 +65,7 @@ class CheckInScreen extends StatelessWidget {
                 CardVaccinated(),
                 CardRiskStatus(),
                 CardLastCheckIn(),
+                SizedBox(height: 10),
               ],
             ),
           ),

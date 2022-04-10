@@ -7,9 +7,11 @@ class TextSubTitle extends StatelessWidget {
   const TextSubTitle({
     Key? key,
     required this.title,
+    this.color = kDarkGreyColor,
   }) : super(key: key);
 
   final String title;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class TextSubTitle extends StatelessWidget {
       title,
       style: GoogleFonts.poppins(
         textStyle: Theme.of(context).textTheme.titleLarge,
-        color: kDarkGreyColor,
+        color: color,
         fontWeight: FontWeight.w700,
       ),
     );

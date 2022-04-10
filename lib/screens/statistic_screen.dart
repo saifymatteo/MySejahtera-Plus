@@ -21,7 +21,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   // TODO: Rework on the date later
   final DateTime currentDate = DateTime.now();
 
-  int statisticsState = 0;
+  int statisticsIndex = 0;
   bool isUpdate = true;
   bool isStates = false;
   bool isGlobal = false;
@@ -57,7 +57,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   isSelected: isUpdate,
                   onPressed: () {
                     setState(() {
-                      statisticsState = 0;
+                      statisticsIndex = 0;
                       isUpdate = true;
                       isStates = false;
                       isGlobal = false;
@@ -69,7 +69,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   isSelected: isStates,
                   onPressed: () {
                     setState(() {
-                      statisticsState = 1;
+                      statisticsIndex = 1;
                       isUpdate = false;
                       isStates = true;
                       isGlobal = false;
@@ -81,7 +81,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   isSelected: isGlobal,
                   onPressed: () {
                     setState(() {
-                      statisticsState = 2;
+                      statisticsIndex = 2;
                       isUpdate = false;
                       isStates = false;
                       isGlobal = true;
@@ -93,7 +93,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
           ),
           Expanded(
             child: IndexedStack(
-              index: statisticsState,
+              index: statisticsIndex,
               children: const [
                 StatisticsUpdates(),
                 StatisticsStates(),

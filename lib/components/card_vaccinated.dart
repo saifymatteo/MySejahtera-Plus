@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../screens/vaccination_screen.dart';
+import '../screens/check_in_vaccination_screen.dart';
 
 import '../helper/constant.dart';
 

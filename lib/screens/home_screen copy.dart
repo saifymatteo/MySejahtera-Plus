@@ -17,13 +17,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Container(
-            height: 330,
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: Column(
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: kDarkGreyColor.withOpacity(0),
+            expandedHeight: 360,
+            flexibleSpace: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // TODO: Implement global variable for date.
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                       const Expanded(
                         flex: 2,
                         child: TextTitle(
-                          title: 'MySejahtera',
+                          title: 'Home',
                         ),
                       ),
                     ],
@@ -154,73 +155,71 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: TextSubTitle(title: 'Covid-19 Latest News'),
+                  ),
+                ),
               ],
             ),
           ),
-        ),
-        const SliverAppBar(
-          backgroundColor: kBackgroundColor,
-          pinned: true,
-          title: Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10),
-            child: TextSubTitle(title: 'Covid-19 Latest News'),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              const [
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+                ButtonCardActivityFeed(
+                  postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
+                  source: 'CPRC KKM',
+                  date: '30 Jan 2022',
+                  postTime: '1 hours ago',
+                ),
+              ],
+            ),
           ),
-        ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            const [
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-              ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

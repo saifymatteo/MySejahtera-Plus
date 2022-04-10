@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../helper/constant.dart';
 import '../helper/name_initial.dart';
+import 'button_color.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({
@@ -97,6 +98,13 @@ class CardProfile extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(height: 30),
+                  ButtonColor(
+                    text: 'Refresh Profile',
+                    onPressed: () {
+                      debugPrint('onPressed: ButtonColor(\'Refresh\')');
+                    },
                   ),
                 ],
               ),
