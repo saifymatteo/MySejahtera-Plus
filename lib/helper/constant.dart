@@ -20,6 +20,8 @@ const Color kStatisticGreen = Color(0xff84e679);
 const Color kStatisticGrey = Color(0xffbab1b3);
 const Color kStatisticOrange = Color(0xfff6ae64);
 
+const Color kCertificateGold = Color(0xfffbd06e);
+
 MaterialColor kPrimarySwatchTheme =
     createMaterialColor(const Color(0xFF4a5bf1));
 
