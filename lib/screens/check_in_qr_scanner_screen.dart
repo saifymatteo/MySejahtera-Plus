@@ -32,7 +32,7 @@ class _CheckInQrScannerScreenState extends State<CheckInQrScannerScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Align(
-                alignment: Alignment.topLeft,
+                alignment: Alignment.topRight,
                 child: ButtonClose(onPressed: widget.onPressed),
               ),
               const Padding(

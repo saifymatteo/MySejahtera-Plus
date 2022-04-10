@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+import 'package:mysejahtera_plus/screens/profile_vaccination_qr_screen.dart';
 
 import '../helper/constant.dart';
-import 'button_close.dart';
 import 'button_vaccine_card.dart';
 import 'tiles_item_row.dart';
 
@@ -125,38 +124,60 @@ class CardVaccinationCertificate extends StatelessWidget {
                   icon: Icons.qr_code_scanner_rounded,
                   text: 'Show QR',
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => SimpleDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        title: const Text(
-                          'Vaccine Certificate QR',
-                          textAlign: TextAlign.center,
-                        ),
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            width: 300,
-                            height: 300,
-                            child: QrImage(
-                              data:
-                                  'https://mysejahtera.malaysia.gov.my/intro/',
-                              size: 300,
-                            ),
-                          ),
-                          const SizedBox(height: 15),
-                          ButtonClose(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ProfileVaccinationQRScreen(),
                       ),
                     );
                   },
                 ),
+                // OpenContainer(
+                //   closedBuilder: (context, openContainer) => ButtonVaccineCard(
+                //     text: 'Show QR',
+                //     icon: Icons.qr_code_scanner_rounded,
+                //     onPressed: openContainer,
+                //   ),
+                //   openBuilder: (context, closedContainer) =>
+                //       ProfileVaccinationQRScreen(onPressed: closedContainer),
+                // ),
+                // ButtonVaccineCard(
+                //   icon: Icons.qr_code_scanner_rounded,
+                //   text: 'Show QR',
+                //   onPressed: () {
+                //     showDialog(
+                //       context: context,
+                //       builder: (context) => SimpleDialog(
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10),
+                //         ),
+                //         title: const Text(
+                //           'Vaccine Certificate QR',
+                //           textAlign: TextAlign.center,
+                //         ),
+                //         children: [
+                //           Container(
+                //             alignment: Alignment.center,
+                //             width: 300,
+                //             height: 300,
+                //             child: QrImage(
+                //               data:
+                //                   'https://mysejahtera.malaysia.gov.my/intro/',
+                //               size: 300,
+                //             ),
+                //           ),
+                //           const SizedBox(height: 15),
+                //           ButtonClose(
+                //             onPressed: () {
+                //               Navigator.pop(context);
+                //             },
+                //           ),
+                //         ],
+                //       ),
+                //     );
+                //   },
+                // ),
                 const SizedBox(width: 20),
                 ButtonVaccineCard(
                   icon: Icons.picture_as_pdf_rounded,

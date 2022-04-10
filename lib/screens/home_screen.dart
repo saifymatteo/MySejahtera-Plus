@@ -21,24 +21,23 @@ class HomeScreen extends StatelessWidget {
       slivers: [
         SliverToBoxAdapter(
           child: Container(
-            height: 330,
+            height: 320,
             padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // TODO: Implement global variable for date.
-                Expanded(
+                Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        flex: 1,
+                      Flexible(
                         child: Text(
                           DateFormat('MMMM d, EEEE').format(currentDate),
                           style: const TextStyle(color: kPrimarySwatch),
                         ),
                       ),
-                      const Expanded(
+                      const Flexible(
                         flex: 2,
                         child: TextTitle(
                           title: 'MySejahtera',
@@ -47,14 +46,15 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
+                Flexible(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Expanded(
-                          flex: 3,
-                          child: TextSubTitle(title: 'Tools and Services')),
-                      Expanded(
+                      const Flexible(
+                        flex: 3,
+                        child: TextSubTitle(title: 'Tools and Services'),
+                      ),
+                      Flexible(
                         child: TextButton(
                           onPressed: () {
                             toolsAndServicesBottomSheet(context);
@@ -72,8 +72,8 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
-                  flex: 4,
+                Flexible(
+                  flex: 3,
                   child: GridView.count(
                     crossAxisCount: 2,
                     mainAxisSpacing: 5,
