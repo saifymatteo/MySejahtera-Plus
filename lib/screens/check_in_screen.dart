@@ -61,11 +61,11 @@ class CheckInScreen extends StatelessWidget {
           Expanded(
             flex: 4,
             child: ListView(
-              children: const [
-                CardVaccinated(),
-                CardRiskStatus(),
+              children: [
+                const CardVaccinated(),
+                const CardRiskStatus(),
                 CardLastCheckIn(),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),
