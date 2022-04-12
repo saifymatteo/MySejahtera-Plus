@@ -5,8 +5,10 @@ import 'material_color_converter.dart';
 const Color kWhiteColor = Color(0xFFFFFFFF);
 const Color kBackgroundColor = Color(0xfffafafa);
 const Color kDarkWhiteColor = Color(0xFFf3f4f9);
+const Color kLightGreyColor = Color(0xFF919191);
 const Color kDarkGreyColor = Color(0xFF2C2C2C);
 const Color kPrimarySwatch = Color(0xFF4a5bf1);
+const Color kPrimarySwatchLight = Color(0xFFCFD3FF);
 
 const Color kVaccinatedFull = Color(0xFF59bc98);
 const Color kVaccinatedFullDark = Color(0xFF14523B);
