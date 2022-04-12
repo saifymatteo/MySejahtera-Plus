@@ -34,6 +34,7 @@ dependencies:
   google_fonts: ^2.3.1 # Dynamic font package - https://pub.dev/packages/google_fonts
   responsive_framework: ^0.1.7 # Easy responsive UI - https://pub.dev/packages/responsive_framework
   qr_flutter: ^4.0.0 # Generate QR code - https://pub.dev/packages/qr_flutter
+  flutter_dotenv: ^5.0.2 # Load configuration at runtime - https://pub.dev/packages/flutter_dotenv
   # TODO: QR code iOS configuration
   mobile_scanner: ^1.0.0 # QR code scanner - https://pub.dev/packages/mobile_scanner
 
@@ -51,6 +52,7 @@ flutter:
     - asset/launcher/
     - asset/images/
     - asset/images/icons/
+    - asset/.env
   fonts:
     - family: CheckInIcons
       fonts:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -11,7 +12,9 @@ import 'screens/statistic_screen.dart';
 import 'screens/check_in_screen.dart';
 import 'screens/profile_screen.dart';
 
-void main() {
+Future<void> main() async {
+  // Need to specify your own environment variables to use API / Token key
+  await dotenv.load(fileName: 'asset/.env');
   runApp(const MyApp());
   //! TODO: Remove device preview later
   // runApp(DevicePreview(builder: (context) => const MyApp()));
@@ -55,12 +58,22 @@ class MainComponent extends StatefulWidget {
 
 class _MainComponentState extends State<MainComponent> {
   int screenIndex = 2;
+  late PageController pageController;
+
+  @override
+  void initState() {
+    pageController = PageController(initialPage: screenIndex);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final PageController pageController =
-        PageController(initialPage: screenIndex);
-
     return Scaffold(
       body: SafeArea(
         child: PageView(
