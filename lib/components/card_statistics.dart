@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,7 +11,7 @@ class CardStatistics extends StatelessWidget {
     required this.totalText,
     required this.plusOrMinus,
     required this.numberTodayText,
-    required this.upOrDown,
+    required this.iconArrow,
     required this.percentage,
     required this.date,
     required this.cardColor,
@@ -21,7 +22,7 @@ class CardStatistics extends StatelessWidget {
   final String totalText;
   final IconData plusOrMinus;
   final String numberTodayText;
-  final IconData upOrDown;
+  final IconData iconArrow;
   final String percentage;
   final String date;
 
@@ -53,15 +54,13 @@ class CardStatistics extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text(
-                      totalText,
-                      style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.headlineMedium,
-                        fontWeight: FontWeight.w600,
-                        color: kWhiteColor,
-                      ),
+                  AutoSizeText(
+                    totalText,
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
+                      fontWeight: FontWeight.w600,
+                      color: kWhiteColor,
                     ),
                   ),
                   RichText(
@@ -89,7 +88,7 @@ class CardStatistics extends StatelessWidget {
                       children: [
                         WidgetSpan(
                           child: Icon(
-                            upOrDown,
+                            iconArrow,
                             size: 16,
                           ),
                         ),
