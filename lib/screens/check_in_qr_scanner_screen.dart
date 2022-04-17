@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../components/button_close.dart';
-import '../helper/check_in_icons_icons.dart';
+import '../helper/check_in_icons.dart';
 import '../helper/constant.dart';
 import 'check_in_fail_screen.dart';
 import '../components/bottom_sheet_check_in_qr.dart';

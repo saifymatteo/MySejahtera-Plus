@@ -6,7 +6,7 @@ import '../components/button_close.dart';
 import '../components/button_dropdown.dart';
 import '../components/text_title.dart';
 import '../components/tiles_check_in_details.dart';
-import '../helper/check_in_icons_icons.dart';
+import '../helper/check_in_icons.dart';
 import 'check_in_details_screen.dart';
 
 class CheckInHistoryScreen extends StatelessWidget {
