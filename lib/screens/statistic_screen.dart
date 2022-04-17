@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysejahtera_plus/models/date_and_time_model.dart';
 import '../components/statistics_global.dart';
 import '../components/statistics_states.dart';
 import '../helper/constant.dart';
-import 'package:intl/intl.dart';
 
 import '../components/button_outline.dart';
 import '../components/statistics_updates.dart';
@@ -18,8 +18,10 @@ class StatisticScreen extends StatefulWidget {
 }
 
 class _StatisticScreenState extends State<StatisticScreen> {
+  final DateAndTime currentTime = DateAndTime();
+
   // TODO: Rework on the date later
-  final DateTime currentDate = DateTime.now();
+  // final DateTime currentDate = DateTime.now();
 
   int statisticsIndex = 0;
   bool isUpdate = true;
@@ -38,7 +40,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
             children: [
               // TODO: Implement global variable for date.
               Text(
-                DateFormat('MMMM d, EEEE').format(currentDate),
+                // DateFormat('MMMM d, EEEE').format(currentDate),
+                currentTime.dateAndDay,
                 style: const TextStyle(color: kPrimarySwatch),
               ),
               const TextTitle(
@@ -119,7 +122,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     text: ' COVIDNOW ',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        debugPrint('onTap: TextSpan(\'COVIDNOW\')');
+                        debugPrint('https://covidnow.moh.gov.my/');
                       },
                     style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.bodySmall,
