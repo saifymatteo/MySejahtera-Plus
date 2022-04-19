@@ -22,7 +22,9 @@ class ButtonCardActivityFeed extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          
+        },
         style: ButtonStyle(
           side: MaterialStateProperty.all(
             const BorderSide(color: kPrimarySwatch),
@@ -47,6 +49,8 @@ class ButtonCardActivityFeed extends StatelessWidget {
                       children: [
                         Text(
                           postTitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             color: kDarkGreyColor,

@@ -4,14 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../helper/constant.dart';
 import 'button_color.dart';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 class CardLastCheckIn extends StatelessWidget {
-  CardLastCheckIn({
+  const CardLastCheckIn({
     Key? key,
   }) : super(key: key);
-
-  final valueToken = dotenv.env['FACEBOOK_ACCESS_TOKEN'];
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +57,6 @@ class CardLastCheckIn extends StatelessWidget {
                     text: 'Check-out',
                     onPressed: () {
                       debugPrint('onPressed: ButtonColor(\'Check-out\')');
-                      debugPrint('Facebook Token: $valueToken');
                     },
                   ),
                 ],
