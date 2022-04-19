@@ -14,43 +14,22 @@ class StatisticsStates extends StatefulWidget {
 }
 
 class _StatisticsStatesState extends State<StatisticsStates> {
-  StatisticsDataStates johor = StatisticsDataStates();
-  StatisticsDataStates kedah = StatisticsDataStates();
-  StatisticsDataStates kelantan = StatisticsDataStates();
-  StatisticsDataStates melaka = StatisticsDataStates();
-  StatisticsDataStates negeriSembilan = StatisticsDataStates();
-  StatisticsDataStates pahang = StatisticsDataStates();
-  StatisticsDataStates perak = StatisticsDataStates();
-  StatisticsDataStates perlis = StatisticsDataStates();
-  StatisticsDataStates pulauPinang = StatisticsDataStates();
-  StatisticsDataStates sabah = StatisticsDataStates();
-  StatisticsDataStates sarawak = StatisticsDataStates();
-  StatisticsDataStates selangor = StatisticsDataStates();
-  StatisticsDataStates terengganu = StatisticsDataStates();
-  StatisticsDataStates kualaLumpur = StatisticsDataStates();
-  StatisticsDataStates labuan = StatisticsDataStates();
-  StatisticsDataStates putrajaya = StatisticsDataStates();
-
-  @override
-  void initState() {
-    johor.updateData('Johor');
-    kedah.updateData('Kedah');
-    kelantan.updateData('Kelantan');
-    melaka.updateData('Melaka');
-    negeriSembilan.updateData('Negeri Sembilan');
-    pahang.updateData('Pahang');
-    perak.updateData('Perak');
-    perlis.updateData('Perlis');
-    pulauPinang.updateData('Pulau Pinang');
-    sabah.updateData('Sabah');
-    sarawak.updateData('Sarawak');
-    selangor.updateData('Selangor');
-    terengganu.updateData('Terengganu');
-    kualaLumpur.updateData('W.P. Kuala Lumpur');
-    labuan.updateData('W.P. Labuan');
-    putrajaya.updateData('W.P. Putrajaya');
-    super.initState();
-  }
+  StatisticsDataStates johor = StatisticsDataStates('Johor');
+  StatisticsDataStates kedah = StatisticsDataStates('Kedah');
+  StatisticsDataStates kelantan = StatisticsDataStates('Kelantan');
+  StatisticsDataStates melaka = StatisticsDataStates('Melaka');
+  StatisticsDataStates negeriSembilan = StatisticsDataStates('Negeri Sembilan');
+  StatisticsDataStates pahang = StatisticsDataStates('Pahang');
+  StatisticsDataStates perak = StatisticsDataStates('Perak');
+  StatisticsDataStates perlis = StatisticsDataStates('Perlis');
+  StatisticsDataStates pulauPinang = StatisticsDataStates('Pulau Pinang');
+  StatisticsDataStates sabah = StatisticsDataStates('Sabah');
+  StatisticsDataStates sarawak = StatisticsDataStates('Sarawak');
+  StatisticsDataStates selangor = StatisticsDataStates('Selangor');
+  StatisticsDataStates terengganu = StatisticsDataStates('Terengganu');
+  StatisticsDataStates kualaLumpur = StatisticsDataStates('W.P. Kuala Lumpur');
+  StatisticsDataStates labuan = StatisticsDataStates('W.P. Labuan');
+  StatisticsDataStates putrajaya = StatisticsDataStates('W.P. Putrajaya');
 
   @override
   Widget build(BuildContext context) {

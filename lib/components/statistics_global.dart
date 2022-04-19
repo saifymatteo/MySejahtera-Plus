@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mysejahtera_plus/models/statistics_model.dart';
 
 import '../helper/constant.dart';
 import 'card_statistics.dart';
 
-class StatisticsGlobal extends StatelessWidget {
+class StatisticsGlobal extends StatefulWidget {
   const StatisticsGlobal({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<StatisticsGlobal> createState() => _StatisticsGlobalState();
+}
+
+class _StatisticsGlobalState extends State<StatisticsGlobal> {
+  StatisticsDataGlobal data = StatisticsDataGlobal();
 
   @override
   Widget build(BuildContext context) {
@@ -15,45 +23,45 @@ class StatisticsGlobal extends StatelessWidget {
       crossAxisSpacing: 5,
       crossAxisCount: 2,
       childAspectRatio: 4 / 4,
-      children: const [
+      children: [
         CardStatistics(
           cardColor: kStatisticRed,
           header: 'Total Confirmed Cases',
-          totalText: '102,323,478',
-          plusOrMinus: Icons.add_rounded,
-          numberTodayText: '9751',
-          iconArrow: Icons.arrow_downward_rounded,
-          percentage: '12',
+          totalText: data.caseConfirmed,
+          plusOrMinus: data.caseConfirmedPlus,
+          numberTodayText: data.caseConfirmedToday,
+          iconArrow: data.caseConfirmedArrow,
+          percentage: data.caseConfirmedPercent,
           date: '29 Jan, 2022, 11:59 PM',
         ),
         CardStatistics(
           cardColor: kStatisticGreen,
           header: 'Total Recovered',
-          totalText: '892,170,288',
-          plusOrMinus: Icons.add_rounded,
-          numberTodayText: '12723',
-          iconArrow: Icons.arrow_upward_rounded,
-          percentage: '8',
+          totalText: data.caseRecovered,
+          plusOrMinus: data.caseRecoveredPlus,
+          numberTodayText: data.caseRecoveredToday,
+          iconArrow: data.caseRecoveredArrow,
+          percentage: data.caseRecoveredPercent,
           date: '29 Jan, 2022, 11:59 PM',
         ),
         CardStatistics(
           cardColor: kStatisticGrey,
           header: 'Total Death',
-          totalText: '6,527,191',
-          plusOrMinus: Icons.add_rounded,
-          numberTodayText: '78',
-          iconArrow: Icons.arrow_downward_rounded,
-          percentage: '3',
+          totalText: data.caseDeath,
+          plusOrMinus: data.caseDeathPlus,
+          numberTodayText: data.caseDeathToday,
+          iconArrow: data.caseDeathArrow,
+          percentage: data.caseDeathPercent,
           date: '29 Jan, 2022, 11:59 PM',
         ),
         CardStatistics(
           cardColor: kStatisticOrange,
           header: 'Total Active Cases',
-          totalText: '96,125,999',
-          plusOrMinus: Icons.remove_rounded,
-          numberTodayText: '9751',
-          iconArrow: Icons.arrow_upward_rounded,
-          percentage: '12',
+          totalText: data.caseActive,
+          plusOrMinus: data.caseActivePlus,
+          numberTodayText: data.caseActiveToday,
+          iconArrow: data.caseActiveArrow,
+          percentage: data.caseActivePercent,
           date: '29 Jan, 2022, 11:59 PM',
         ),
       ],

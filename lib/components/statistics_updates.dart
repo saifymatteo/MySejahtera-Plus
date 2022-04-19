@@ -17,12 +17,6 @@ class _StatisticsUpdatesState extends State<StatisticsUpdates> {
   StatisticsDataUpdates data = StatisticsDataUpdates();
 
   @override
-  void initState() {
-    data.updateData();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GridView.count(
       mainAxisSpacing: 5,
