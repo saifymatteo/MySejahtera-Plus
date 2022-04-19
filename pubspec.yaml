@@ -38,7 +38,8 @@ dependencies:
   flutter_cache_manager: ^3.3.0 # To load statistics data - https://pub.dev/packages/flutter_cache_manager
   csv: ^5.0.1 # To load the statistics data in csv - https://pub.dev/packages/csv
   auto_size_text: ^3.0.0 # Auto resize text - https://pub.dev/packages/auto_size_text
-  tweet_ui: ^4.0.1 # ! To load KKM tweets - https://pub.dev/packages/tweet_ui
+  timeago: ^3.2.2 # Easy time format - https://pub.dev/packages/timeago
+  url_launcher: ^6.0.20 # Launch url from String - https://pub.dev/packages/url_launcher
   # TODO: QR code iOS configuration
   mobile_scanner: ^1.0.0 # QR code scanner - https://pub.dev/packages/mobile_scanner
 
