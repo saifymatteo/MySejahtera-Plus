@@ -3,14 +3,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
 // import 'package:device_preview/device_preview.dart';
 
 import 'helper/constant.dart';
-
-import 'screens/home_screen.dart';
-import 'screens/statistic_screen.dart';
-import 'screens/check_in_screen.dart';
-import 'screens/profile_screen.dart';
+import 'presentation/screens/check_in_screen.dart';
+import 'presentation/screens/home_screen.dart';
+import 'presentation/screens/profile_screen.dart';
+import 'presentation/screens/statistic_screen.dart';
 
 Future<void> main() async {
   // Need to specify your own environment variables to use API / Token key
@@ -135,7 +135,7 @@ class _MainComponentState extends State<MainComponent> {
 }
 
 List<Widget> screenOptions = <Widget>[
-  HomeScreen(),
+  const HomeScreen(),
   const StatisticScreen(),
   CheckInScreen(),
   const ProfileScreen(),
