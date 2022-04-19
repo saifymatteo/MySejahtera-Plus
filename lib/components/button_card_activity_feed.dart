@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../helper/constant.dart';
 
@@ -9,12 +10,16 @@ class ButtonCardActivityFeed extends StatelessWidget {
     required this.postTitle,
     this.source,
     this.date,
+    required this.url,
+    required this.imageURL,
     required this.postTime,
   }) : super(key: key);
 
   final String postTitle;
   final String? source;
   final String? date;
+  final String url;
+  final String imageURL;
   final String postTime;
 
   @override
@@ -22,8 +27,8 @@ class ButtonCardActivityFeed extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: OutlinedButton(
-        onPressed: () {
-          
+        onPressed: () async {
+          if (!await launch(url)) throw 'URL can not launch $url';
         },
         style: ButtonStyle(
           side: MaterialStateProperty.all(
@@ -83,7 +88,10 @@ class ButtonCardActivityFeed extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: kPrimarySwatch,
-                  // image: DecorationImage(image: AssetImage('assetName'))
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(imageURL),
+                  ),
                 ),
               ),
             ],
