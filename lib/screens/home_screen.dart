@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:mysejahtera_plus/models/home_feed.dart';
 import 'package:mysejahtera_plus/screens/question_screen.dart';
 import '../components/bottom_sheet_tools_and_services.dart';
 import '../helper/constant.dart';
@@ -10,11 +11,18 @@ import '../components/button_card_activity_feed.dart';
 import '../components/card_tools_and_services.dart';
 import '../components/text_sub_title.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   // TODO: Rework on the date later
   final DateTime currentDate = DateTime.now();
+
+  HomeScreenFeed data = HomeScreenFeed();
 
   @override
   Widget build(BuildContext context) {
@@ -177,48 +185,48 @@ class HomeScreen extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildListDelegate(
-            const [
+            [
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
-                postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
-                source: 'CPRC KKM',
-                date: '30 Jan 2022',
-                postTime: '1 hours ago',
+                postTitle: data.title,
+                source: data.source,
+                date: data.date,
+                postTime: data.time,
               ),
               ButtonCardActivityFeed(
                 postTitle: 'Malaysia Covid-19 cases drop 20% in past week',
