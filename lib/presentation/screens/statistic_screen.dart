@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysejahtera_plus/data_layers/repositories/date_and_time_repositories.dart';
 
-import '../../data_layers/models/date_and_time_model.dart';
 import '../../helper/constant.dart';
 import '../components/button_outline.dart';
 import '../components/statistics_global.dart';
@@ -18,10 +18,19 @@ class StatisticScreen extends StatefulWidget {
 }
 
 class _StatisticScreenState extends State<StatisticScreen> {
-  final DateAndTime currentTime = DateAndTime();
+  
+  final DateAndTimeRepositories time = DateAndTimeRepositories();
+  late String date;
+  late String dateAndTime;
 
-  // TODO: Rework on the date later
-  // final DateTime currentDate = DateTime.now();
+  @override
+  void initState() {
+    date = time.fetchDateTime().dateAndDay;
+    dateAndTime = time.fetchDateTime().dateFull +
+        ' ' +
+        time.fetchDateTime().timeHourMinute;
+    super.initState();
+  }
 
   int statisticsIndex = 0;
   bool isUpdate = true;
@@ -38,10 +47,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // TODO: Implement global variable for date.
               Text(
-                // DateFormat('MMMM d, EEEE').format(currentDate),
-                currentTime.dateAndDay,
+                date,
                 style: const TextStyle(color: kPrimarySwatch),
               ),
               const TextTitle(
@@ -97,10 +104,12 @@ class _StatisticScreenState extends State<StatisticScreen> {
           Expanded(
             child: IndexedStack(
               index: statisticsIndex,
-              children: const [
-                StatisticsUpdates(),
-                StatisticsStates(),
-                StatisticsGlobal()
+              children: [
+                StatisticsUpdates(
+                  time: dateAndTime,
+                ),
+                const StatisticsStates(),
+                const StatisticsGlobal()
               ],
             ),
           ),
