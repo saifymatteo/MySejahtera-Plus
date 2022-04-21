@@ -237,52 +237,57 @@ class StatisticsDataGlobal {
   }
 
   void updateData() async {
-    Map<String, dynamic> casesToday = jsonDecode(await fetchJSONasString(
-        cacheManager: cacheManager, urlCSV: urlGlobalToday));
-    Map<String, dynamic> casesYesterday = jsonDecode(await fetchJSONasString(
-        cacheManager: cacheManager, urlCSV: urlGlobalYesterday));
+    try {
+      Map<String, dynamic> casesToday = jsonDecode(await fetchJSONasString(
+          cacheManager: cacheManager, urlCSV: urlGlobalToday));
+      Map<String, dynamic> casesYesterday = jsonDecode(await fetchJSONasString(
+          cacheManager: cacheManager, urlCSV: urlGlobalYesterday));
 
-    // Accessing the fields
-    debugPrint('Covid-19 Global Data is being updated');
+      // Accessing the fields
+      debugPrint('Covid-19 Global Data is being updated');
 
-    // Confirmed Card data
-    caseConfirmed = numberFormatter.format(casesToday["cases"]);
-    caseConfirmedToday = numberFormatter.format(casesToday["todayCases"]);
-    caseConfirmedPercent =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[0];
-    caseConfirmedPlus =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[1];
-    caseConfirmedArrow =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[2];
+      // Confirmed Card data
+      caseConfirmed = numberFormatter.format(casesToday["cases"]);
+      caseConfirmedToday = numberFormatter.format(casesToday["todayCases"]);
+      caseConfirmedPercent =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[0];
+      caseConfirmedPlus =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[1];
+      caseConfirmedArrow =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[2];
 
-    // Recovered Card data
-    caseRecovered = numberFormatter.format(casesToday["recovered"]);
-    caseRecoveredToday = numberFormatter.format(casesToday["todayRecovered"]);
-    caseRecoveredPercent = calculateDifferenceJSON(
-        casesToday, casesYesterday, "todayRecovered")[0];
-    caseRecoveredPlus = calculateDifferenceJSON(
-        casesToday, casesYesterday, "todayRecovered")[1];
-    caseRecoveredArrow = calculateDifferenceJSON(
-        casesToday, casesYesterday, "todayRecovered")[2];
+      // Recovered Card data
+      caseRecovered = numberFormatter.format(casesToday["recovered"]);
+      caseRecoveredToday = numberFormatter.format(casesToday["todayRecovered"]);
+      caseRecoveredPercent = calculateDifferenceJSON(
+          casesToday, casesYesterday, "todayRecovered")[0];
+      caseRecoveredPlus = calculateDifferenceJSON(
+          casesToday, casesYesterday, "todayRecovered")[1];
+      caseRecoveredArrow = calculateDifferenceJSON(
+          casesToday, casesYesterday, "todayRecovered")[2];
 
-    // Death Card data
-    caseDeath = numberFormatter.format(casesToday["deaths"]);
-    caseDeathToday = numberFormatter.format(casesToday["todayDeaths"]);
-    caseDeathPercent =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[0];
-    caseDeathPlus =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[1];
-    caseDeathArrow =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[2];
+      // Death Card data
+      caseDeath = numberFormatter.format(casesToday["deaths"]);
+      caseDeathToday = numberFormatter.format(casesToday["todayDeaths"]);
+      caseDeathPercent =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[0];
+      caseDeathPlus =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[1];
+      caseDeathArrow =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayDeaths")[2];
 
-    // Active Card data
-    caseActive = numberFormatter.format(casesToday["active"]);
-    caseActiveToday = numberFormatter.format(casesToday["todayCases"]);
-    caseActivePercent =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[0];
-    caseActivePlus =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[1];
-    caseActiveArrow =
-        calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[2];
+      // Active Card data
+      caseActive = numberFormatter.format(casesToday["active"]);
+      caseActiveToday = numberFormatter.format(casesToday["todayCases"]);
+      caseActivePercent =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[0];
+      caseActivePlus =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[1];
+      caseActiveArrow =
+          calculateDifferenceJSON(casesToday, casesYesterday, "todayCases")[2];
+    } catch (e) {
+      debugPrint('Covid-19 Global Data could not be updated');
+      debugPrint('Error: $e');
+    }
   }
 }
