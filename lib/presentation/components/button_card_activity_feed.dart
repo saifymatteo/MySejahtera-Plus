@@ -49,27 +49,22 @@ class ButtonCardActivityFeed extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          postTitle,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            color: kDarkGreyColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          '$source • $date',
-                          style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.bodySmall,
-                            color: kDarkGreyColor.withOpacity(0.5),
-                          ),
-                        ),
-                      ],
+                    Text(
+                      postTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.bodyMedium,
+                        color: kDarkGreyColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      '$source • $date',
+                      style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.bodySmall,
+                        color: kDarkGreyColor.withOpacity(0.5),
+                      ),
                     ),
                     Text(
                       postTime,
