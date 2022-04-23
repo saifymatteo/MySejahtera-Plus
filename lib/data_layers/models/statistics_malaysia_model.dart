@@ -1,10 +1,10 @@
-import 'package:mysejahtera_plus/data_layers/models/statistics_card_csv_model.dart';
+import 'package:mysejahtera_plus/data_layers/models/statistics_card_model.dart';
 
 class StatisticsDataMalaysiaModel {
-  final StatisticsCardConfirmedCsvModel cardConfirmedModel;
-  final StatisticsCardRecoveredCsvModel cardRecoveredModel;
-  final StatisticsCardDeathCsvModel cardDeathModel;
-  final StatisticsCardActiveCsvModel cardActiveModel;
+  final StatisticsCardConfirmedModel cardConfirmedModel;
+  final StatisticsCardRecoveredModel cardRecoveredModel;
+  final StatisticsCardDeathModel cardDeathModel;
+  final StatisticsCardActiveModel cardActiveModel;
 
   StatisticsDataMalaysiaModel({
     required this.cardConfirmedModel,
@@ -16,10 +16,10 @@ class StatisticsDataMalaysiaModel {
   factory StatisticsDataMalaysiaModel.fromCsv(
       List data) {
     return StatisticsDataMalaysiaModel(
-      cardConfirmedModel: StatisticsCardConfirmedCsvModel.fromCsv(data),
-      cardRecoveredModel: StatisticsCardRecoveredCsvModel.fromCsv(data),
-      cardDeathModel: StatisticsCardDeathCsvModel.fromCsv(data),
-      cardActiveModel: StatisticsCardActiveCsvModel.fromCsv(data),
+      cardConfirmedModel: StatisticsCardConfirmedModel.fromCsv(data),
+      cardRecoveredModel: StatisticsCardRecoveredModel.fromCsv(data),
+      cardDeathModel: StatisticsCardDeathModel.fromCsv(data),
+      cardActiveModel: StatisticsCardActiveModel.fromCsv(data),
     );
   }
 }
