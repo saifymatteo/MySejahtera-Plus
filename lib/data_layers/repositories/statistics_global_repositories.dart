@@ -9,6 +9,7 @@ import '../../helper/statistic_calculator.dart';
 const urlGlobalToday = 'https://disease.sh/v3/covid-19/all';
 const urlGlobalYesterday =
     'https://disease.sh/v3/covid-19/all?yesterday=yesterday';
+    
 DefaultCacheManager cacheManager = DefaultCacheManager();
 
 class StatisticsDataGlobalRepositories {
