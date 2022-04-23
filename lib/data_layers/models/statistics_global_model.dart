@@ -1,10 +1,10 @@
-import 'statistics_card_json_model.dart';
+import 'statistics_card_model.dart';
 
 class StatisticsDataGlobalModel {
-  final StatisticsCardConfirmedJsonModel cardConfirmedModel;
-  final StatisticsCardRecoveredJsonModel cardRecoveredModel;
-  final StatisticsCardDeathJsonModel cardDeathModel;
-  final StatisticsCardActiveJsonModel cardActiveModel;
+  final StatisticsCardConfirmedModel cardConfirmedModel;
+  final StatisticsCardRecoveredModel cardRecoveredModel;
+  final StatisticsCardDeathModel cardDeathModel;
+  final StatisticsCardActiveModel cardActiveModel;
 
   StatisticsDataGlobalModel({
     required this.cardConfirmedModel,
@@ -16,10 +16,10 @@ class StatisticsDataGlobalModel {
   factory StatisticsDataGlobalModel.fromJson(
       Map<String, dynamic> data, List percentAndIcon) {
     return StatisticsDataGlobalModel(
-      cardConfirmedModel: StatisticsCardConfirmedJsonModel.fromJson(data, percentAndIcon),
-      cardRecoveredModel: StatisticsCardRecoveredJsonModel.fromJson(data, percentAndIcon),
-      cardDeathModel: StatisticsCardDeathJsonModel.fromJson(data, percentAndIcon),
-      cardActiveModel: StatisticsCardActiveJsonModel.fromJson(data, percentAndIcon),
+      cardConfirmedModel: StatisticsCardConfirmedModel.fromJson(data, percentAndIcon),
+      cardRecoveredModel: StatisticsCardRecoveredModel.fromJson(data, percentAndIcon),
+      cardDeathModel: StatisticsCardDeathModel.fromJson(data, percentAndIcon),
+      cardActiveModel: StatisticsCardActiveModel.fromJson(data, percentAndIcon),
     );
   }
 }
