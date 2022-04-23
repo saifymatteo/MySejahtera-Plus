@@ -5,9 +5,9 @@ import 'package:mysejahtera_plus/data_layers/repositories/date_and_time_reposito
 
 import '../../helper/constant.dart';
 import '../components/button_outline.dart';
-import '../components/statistics_global.dart';
-import '../components/statistics_states.dart';
-import '../components/statistics_updates.dart';
+import '../components/grid_statistics_global.dart';
+import '../components/grid_statistics_states.dart';
+import '../components/grid_statistics_updates.dart';
 import '../components/text_title.dart';
 
 class StatisticScreen extends StatefulWidget {
@@ -105,11 +105,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
             child: IndexedStack(
               index: statisticsIndex,
               children: [
-                StatisticsUpdates(
+                GridStatisticsUpdates(
                   time: dateAndTime,
                 ),
-                const StatisticsStates(),
-                const StatisticsGlobal()
+                GridStatisticsStates(
+                  time: dateAndTime,
+                ),
+                GridStatisticsGlobal(
+                  time: dateAndTime,
+                )
               ],
             ),
           ),

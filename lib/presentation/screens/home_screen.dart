@@ -16,12 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   // TODO: Rework on the date later
   final DateTime currentDate = DateTime.now();
 
-  HomeScreenFeedRepositories data = HomeScreenFeedRepositories();
+  HomeScreenFeedRepositories repo = HomeScreenFeedRepositories();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: data.fetchFeedList(),
+      future: repo.fetchFeedList(),
       builder: (context, AsyncSnapshot<List> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return CustomScrollView(
