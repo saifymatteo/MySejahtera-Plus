@@ -5,27 +5,34 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../helper/constant.dart';
 
 class ButtonDropDown extends StatefulWidget {
-  ButtonDropDown({
+  const ButtonDropDown({
     Key? key,
     required this.dropdownItems,
     required this.initialValue,
   }) : super(key: key);
 
   final List<String> dropdownItems;
-  //! TODO: Immutable class, need to check again later
-  String initialValue;
+  final String initialValue;
 
   @override
   State<ButtonDropDown> createState() => _ButtonDropDownState();
 }
 
 class _ButtonDropDownState extends State<ButtonDropDown> {
+  late String text;
+
+  @override
+  void initState() {
+    text = widget.initialValue;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
-        hint: Text(widget.initialValue),
-        value: widget.initialValue,
+        hint: Text(text),
+        value: text,
         icon: const Icon(Icons.keyboard_arrow_down_rounded),
         buttonHeight: 35,
         buttonDecoration: BoxDecoration(
@@ -51,7 +58,7 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
             .toList(),
         onChanged: (value) {
           setState(() {
-            widget.initialValue = value as String;
+            text = value as String;
           });
         },
       ),
