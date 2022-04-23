@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           );
-        } else {
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
           return CustomScrollView(
             slivers: [
               HomeScreenHeader(currentDate: currentDate),
@@ -58,6 +58,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 50,
                     child: const CircularProgressIndicator(),
                   ),
+                ]),
+              ),
+            ],
+          );
+        } else if (snapshot.hasError) {
+          return CustomScrollView(
+            slivers: [
+              HomeScreenHeader(currentDate: currentDate),
+              const HomeScreenTitle(),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  Text('Error: ${snapshot.error}'),
+                ]),
+              ),
+            ],
+          );
+        } else {
+          return CustomScrollView(
+            slivers: [
+              HomeScreenHeader(currentDate: currentDate),
+              const HomeScreenTitle(),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  const Text('Error, try to restart the app'),
                 ]),
               ),
             ],
