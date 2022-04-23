@@ -7,6 +7,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 // import 'package:device_preview/device_preview.dart';
 
 import 'helper/constant.dart';
+import 'helper/pageview_keepalive.dart';
 import 'presentation/screens/check_in_screen.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/profile_screen.dart';
@@ -135,8 +136,9 @@ class _MainComponentState extends State<MainComponent> {
 }
 
 List<Widget> screenOptions = <Widget>[
-  const HomeScreen(),
-  const StatisticScreen(),
-  CheckInScreen(),
-  const ProfileScreen(),
+  const KeepAlivePage(child: HomeScreen()),
+  const KeepAlivePage(child: StatisticScreen()),
+  KeepAlivePage(child: CheckInScreen()),
+  const KeepAlivePage(child: ProfileScreen()),
 ];
+
