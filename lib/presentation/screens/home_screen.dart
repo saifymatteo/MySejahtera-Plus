@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mysejahtera_plus/data_layers/repositories/home_feed_repositories.dart';
 
+import '../../data_layers/repositories/date_and_time_repositories.dart';
 import '../components/button_card_activity_feed.dart';
 import '../components/home_screen_header.dart';
 import '../components/home_screen_title.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  // TODO: Rework on the date later
-  final DateTime currentDate = DateTime.now();
-
-  HomeScreenFeedRepositories repo = HomeScreenFeedRepositories();
+  final HomeScreenFeedRepositories repo = HomeScreenFeedRepositories();
+  final DateAndTimeRepositories time = DateAndTimeRepositories();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if (snapshot.connectionState == ConnectionState.done) {
           return CustomScrollView(
             slivers: [
-              HomeScreenHeader(currentDate: currentDate),
+              HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -48,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else if (snapshot.connectionState == ConnectionState.waiting) {
           return CustomScrollView(
             slivers: [
-              HomeScreenHeader(currentDate: currentDate),
+              HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
               SliverList(
                 delegate: SliverChildListDelegate([
@@ -65,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else if (snapshot.hasError) {
           return CustomScrollView(
             slivers: [
-              HomeScreenHeader(currentDate: currentDate),
+              HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
               SliverList(
                 delegate: SliverChildListDelegate([
@@ -77,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else {
           return CustomScrollView(
             slivers: [
-              HomeScreenHeader(currentDate: currentDate),
+              HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
               SliverList(
                 delegate: SliverChildListDelegate([

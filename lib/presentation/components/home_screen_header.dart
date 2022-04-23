@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 
 import '../../helper/constant.dart';
 import '../screens/question_screen.dart';
@@ -12,10 +11,10 @@ import 'text_title.dart';
 class HomeScreenHeader extends StatelessWidget {
   const HomeScreenHeader({
     Key? key,
-    required this.currentDate,
+    required this.date,
   }) : super(key: key);
 
-  final DateTime currentDate;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class HomeScreenHeader extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      DateFormat('MMMM d, EEEE').format(currentDate),
+                      date,
                       style: const TextStyle(color: kPrimarySwatch),
                     ),
                   ),

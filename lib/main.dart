@@ -136,7 +136,7 @@ class _MainComponentState extends State<MainComponent> {
 }
 
 List<Widget> screenOptions = <Widget>[
-  const KeepAlivePage(child: HomeScreen()),
+  KeepAlivePage(child: HomeScreen()),
   const KeepAlivePage(child: StatisticScreen()),
   KeepAlivePage(child: CheckInScreen()),
   const KeepAlivePage(child: ProfileScreen()),
