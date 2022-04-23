@@ -4,17 +4,22 @@ import '../../data_layers/models/statistics_model.dart';
 import '../../helper/constant.dart';
 import 'card_statistics.dart';
 
-class StatisticsGlobal extends StatefulWidget {
-  const StatisticsGlobal({
+class GridStatisticsUpdates extends StatefulWidget {
+  const GridStatisticsUpdates({
     Key? key,
+    required this.time,
   }) : super(key: key);
 
+  final String time;
+
   @override
-  State<StatisticsGlobal> createState() => _StatisticsGlobalState();
+  State<GridStatisticsUpdates> createState() => _GridStatisticsUpdatesState();
 }
 
-class _StatisticsGlobalState extends State<StatisticsGlobal> {
-  StatisticsDataGlobal data = StatisticsDataGlobal();
+class _GridStatisticsUpdatesState extends State<GridStatisticsUpdates> {
+  StatisticsDataUpdates data = StatisticsDataUpdates();
+
+  // TODO: Use FutureBuilder for the data
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class _StatisticsGlobalState extends State<StatisticsGlobal> {
           numberTodayText: data.caseConfirmedToday,
           iconArrow: data.caseConfirmedArrow,
           percentage: data.caseConfirmedPercent,
-          date: '29 Jan, 2022, 11:59 PM',
+          date: widget.time,
         ),
         CardStatistics(
           cardColor: kStatisticGreen,
@@ -42,28 +47,29 @@ class _StatisticsGlobalState extends State<StatisticsGlobal> {
           numberTodayText: data.caseRecoveredToday,
           iconArrow: data.caseRecoveredArrow,
           percentage: data.caseRecoveredPercent,
-          date: '29 Jan, 2022, 11:59 PM',
+          date: widget.time,
         ),
         CardStatistics(
           cardColor: kStatisticGrey,
-          header: 'Total Death',
+          header: widget.time,
           totalText: data.caseDeath,
           plusOrMinus: data.caseDeathPlus,
           numberTodayText: data.caseDeathToday,
           iconArrow: data.caseDeathArrow,
           percentage: data.caseDeathPercent,
-          date: '29 Jan, 2022, 11:59 PM',
+          date: widget.time,
         ),
         CardStatistics(
           cardColor: kStatisticOrange,
-          header: 'Total Active Cases',
+          header: widget.time,
           totalText: data.caseActive,
           plusOrMinus: data.caseActivePlus,
           numberTodayText: data.caseActiveToday,
           iconArrow: data.caseActiveArrow,
           percentage: data.caseActivePercent,
-          date: '29 Jan, 2022, 11:59 PM',
+          date: widget.time,
         ),
+        const SizedBox(height: 10),
       ],
     );
   }

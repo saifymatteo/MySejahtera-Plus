@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../data_layers/models/statistics_model.dart';
 import '../../helper/constant.dart';
-import 'statistics_states_items.dart';
+import 'grid_statistics_states_items.dart';
 
-class StatisticsStates extends StatefulWidget {
-  const StatisticsStates({
+class GridStatisticsStates extends StatefulWidget {
+  const GridStatisticsStates({
     Key? key,
+    required this.time
   }) : super(key: key);
 
+  final String time;
+
   @override
-  State<StatisticsStates> createState() => _StatisticsStatesState();
+  State<GridStatisticsStates> createState() => _GridStatisticsStatesState();
 }
 
-class _StatisticsStatesState extends State<StatisticsStates> {
+class _GridStatisticsStatesState extends State<GridStatisticsStates> {
+  
   StatisticsDataStates johor = StatisticsDataStates('Johor');
   StatisticsDataStates kedah = StatisticsDataStates('Kedah');
   StatisticsDataStates kelantan = StatisticsDataStates('Kelantan');
@@ -31,6 +35,8 @@ class _StatisticsStatesState extends State<StatisticsStates> {
   StatisticsDataStates labuan = StatisticsDataStates('W.P. Labuan');
   StatisticsDataStates putrajaya = StatisticsDataStates('W.P. Putrajaya');
 
+  // TODO: Use FutureBuilder for the data
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -45,7 +51,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: johor.caseConfirmedToday,
           topLeftUpOrDown: johor.caseConfirmedArrow,
           topLeftPercentage: johor.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -54,7 +60,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: johor.caseRecoveredToday,
           topRightUpOrDown: johor.caseRecoveredArrow,
           topRightPercentage: johor.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -63,7 +69,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: johor.caseDeathToday,
           bottomLeftUpOrDown: johor.caseDeathArrow,
           bottomLeftPercentage: johor.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -72,7 +78,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: johor.caseActiveToday,
           bottomRightUpOrDown: johor.caseActiveArrow,
           bottomRightPercentage: johor.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Kedah',
@@ -84,7 +90,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: kedah.caseConfirmedToday,
           topLeftUpOrDown: kedah.caseConfirmedArrow,
           topLeftPercentage: kedah.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -93,7 +99,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: kedah.caseRecoveredToday,
           topRightUpOrDown: kedah.caseRecoveredArrow,
           topRightPercentage: kedah.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -102,7 +108,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: kedah.caseDeathToday,
           bottomLeftUpOrDown: kedah.caseDeathArrow,
           bottomLeftPercentage: kedah.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -111,7 +117,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: kedah.caseActiveToday,
           bottomRightUpOrDown: kedah.caseActiveArrow,
           bottomRightPercentage: kedah.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Kelantan',
@@ -123,7 +129,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: kelantan.caseConfirmedToday,
           topLeftUpOrDown: kelantan.caseConfirmedArrow,
           topLeftPercentage: kelantan.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -132,7 +138,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: kelantan.caseRecoveredToday,
           topRightUpOrDown: kelantan.caseRecoveredArrow,
           topRightPercentage: kelantan.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -141,7 +147,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: kelantan.caseDeathToday,
           bottomLeftUpOrDown: kelantan.caseDeathArrow,
           bottomLeftPercentage: kelantan.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -150,7 +156,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: kelantan.caseActiveToday,
           bottomRightUpOrDown: kelantan.caseActiveArrow,
           bottomRightPercentage: kelantan.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Malacca',
@@ -162,7 +168,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: melaka.caseConfirmedToday,
           topLeftUpOrDown: melaka.caseConfirmedArrow,
           topLeftPercentage: melaka.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -171,7 +177,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: melaka.caseRecoveredToday,
           topRightUpOrDown: melaka.caseRecoveredArrow,
           topRightPercentage: melaka.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -180,7 +186,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: melaka.caseDeathToday,
           bottomLeftUpOrDown: melaka.caseDeathArrow,
           bottomLeftPercentage: melaka.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -189,7 +195,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: melaka.caseActiveToday,
           bottomRightUpOrDown: melaka.caseActiveArrow,
           bottomRightPercentage: melaka.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Negeri Sembilan',
@@ -201,7 +207,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: negeriSembilan.caseConfirmedToday,
           topLeftUpOrDown: negeriSembilan.caseConfirmedArrow,
           topLeftPercentage: negeriSembilan.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -210,7 +216,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: negeriSembilan.caseRecoveredToday,
           topRightUpOrDown: negeriSembilan.caseRecoveredArrow,
           topRightPercentage: negeriSembilan.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -219,7 +225,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: negeriSembilan.caseDeathToday,
           bottomLeftUpOrDown: negeriSembilan.caseDeathArrow,
           bottomLeftPercentage: negeriSembilan.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -228,7 +234,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: negeriSembilan.caseActiveToday,
           bottomRightUpOrDown: negeriSembilan.caseActiveArrow,
           bottomRightPercentage: negeriSembilan.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Pahang',
@@ -240,7 +246,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: pahang.caseConfirmedToday,
           topLeftUpOrDown: pahang.caseConfirmedArrow,
           topLeftPercentage: pahang.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -249,7 +255,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: pahang.caseRecoveredToday,
           topRightUpOrDown: pahang.caseRecoveredArrow,
           topRightPercentage: pahang.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -258,7 +264,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: pahang.caseDeathToday,
           bottomLeftUpOrDown: pahang.caseDeathArrow,
           bottomLeftPercentage: pahang.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -267,7 +273,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: pahang.caseActiveToday,
           bottomRightUpOrDown: pahang.caseActiveArrow,
           bottomRightPercentage: pahang.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Penang',
@@ -279,7 +285,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: pulauPinang.caseConfirmedToday,
           topLeftUpOrDown: pulauPinang.caseConfirmedArrow,
           topLeftPercentage: pulauPinang.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -288,7 +294,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: pulauPinang.caseRecoveredToday,
           topRightUpOrDown: pulauPinang.caseRecoveredArrow,
           topRightPercentage: pulauPinang.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -297,7 +303,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: pulauPinang.caseDeathToday,
           bottomLeftUpOrDown: pulauPinang.caseDeathArrow,
           bottomLeftPercentage: pulauPinang.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -306,7 +312,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: pulauPinang.caseActiveToday,
           bottomRightUpOrDown: pulauPinang.caseActiveArrow,
           bottomRightPercentage: pulauPinang.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Perak',
@@ -318,7 +324,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: perak.caseConfirmedToday,
           topLeftUpOrDown: perak.caseConfirmedArrow,
           topLeftPercentage: perak.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -327,7 +333,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: perak.caseRecoveredToday,
           topRightUpOrDown: perak.caseRecoveredArrow,
           topRightPercentage: perak.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -336,7 +342,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: perak.caseDeathToday,
           bottomLeftUpOrDown: perak.caseDeathArrow,
           bottomLeftPercentage: perak.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -345,7 +351,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: perak.caseActiveToday,
           bottomRightUpOrDown: perak.caseActiveArrow,
           bottomRightPercentage: perak.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Perlis',
@@ -357,7 +363,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: perlis.caseConfirmedToday,
           topLeftUpOrDown: perlis.caseConfirmedArrow,
           topLeftPercentage: perlis.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -366,7 +372,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: perlis.caseRecoveredToday,
           topRightUpOrDown: perlis.caseRecoveredArrow,
           topRightPercentage: perlis.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -375,7 +381,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: perlis.caseDeathToday,
           bottomLeftUpOrDown: perlis.caseDeathArrow,
           bottomLeftPercentage: perlis.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -384,7 +390,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: perlis.caseActiveToday,
           bottomRightUpOrDown: perlis.caseActiveArrow,
           bottomRightPercentage: perlis.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Sabah',
@@ -396,7 +402,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: sabah.caseConfirmedToday,
           topLeftUpOrDown: sabah.caseConfirmedArrow,
           topLeftPercentage: sabah.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -405,7 +411,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: sabah.caseRecoveredToday,
           topRightUpOrDown: sabah.caseRecoveredArrow,
           topRightPercentage: sabah.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -414,7 +420,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: sabah.caseDeathToday,
           bottomLeftUpOrDown: sabah.caseDeathArrow,
           bottomLeftPercentage: sabah.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -423,7 +429,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: sabah.caseActiveToday,
           bottomRightUpOrDown: sabah.caseActiveArrow,
           bottomRightPercentage: sabah.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Sarawak',
@@ -435,7 +441,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: sarawak.caseConfirmedToday,
           topLeftUpOrDown: sarawak.caseConfirmedArrow,
           topLeftPercentage: sarawak.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -444,7 +450,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: sarawak.caseRecoveredToday,
           topRightUpOrDown: sarawak.caseRecoveredArrow,
           topRightPercentage: sarawak.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -453,7 +459,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: sarawak.caseDeathToday,
           bottomLeftUpOrDown: sarawak.caseDeathArrow,
           bottomLeftPercentage: sarawak.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -462,7 +468,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: sarawak.caseActiveToday,
           bottomRightUpOrDown: sarawak.caseActiveArrow,
           bottomRightPercentage: sarawak.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Selangor',
@@ -474,7 +480,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: selangor.caseConfirmedToday,
           topLeftUpOrDown: selangor.caseConfirmedArrow,
           topLeftPercentage: selangor.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -483,7 +489,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: selangor.caseRecoveredToday,
           topRightUpOrDown: selangor.caseRecoveredArrow,
           topRightPercentage: selangor.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -492,7 +498,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: selangor.caseDeathToday,
           bottomLeftUpOrDown: selangor.caseDeathArrow,
           bottomLeftPercentage: selangor.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -501,7 +507,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: selangor.caseActiveToday,
           bottomRightUpOrDown: selangor.caseActiveArrow,
           bottomRightPercentage: selangor.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'Terengganu',
@@ -513,7 +519,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: terengganu.caseConfirmedToday,
           topLeftUpOrDown: terengganu.caseConfirmedArrow,
           topLeftPercentage: terengganu.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -522,7 +528,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: terengganu.caseRecoveredToday,
           topRightUpOrDown: terengganu.caseRecoveredArrow,
           topRightPercentage: terengganu.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -531,7 +537,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: terengganu.caseDeathToday,
           bottomLeftUpOrDown: terengganu.caseDeathArrow,
           bottomLeftPercentage: terengganu.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -540,7 +546,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: terengganu.caseActiveToday,
           bottomRightUpOrDown: terengganu.caseActiveArrow,
           bottomRightPercentage: terengganu.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'W.P. Kuala Lumpur',
@@ -552,7 +558,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: kualaLumpur.caseConfirmedToday,
           topLeftUpOrDown: kualaLumpur.caseConfirmedArrow,
           topLeftPercentage: kualaLumpur.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -561,7 +567,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: kualaLumpur.caseRecoveredToday,
           topRightUpOrDown: kualaLumpur.caseRecoveredArrow,
           topRightPercentage: kualaLumpur.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -570,7 +576,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: kualaLumpur.caseDeathToday,
           bottomLeftUpOrDown: kualaLumpur.caseDeathArrow,
           bottomLeftPercentage: kualaLumpur.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -579,7 +585,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: kualaLumpur.caseActiveToday,
           bottomRightUpOrDown: kualaLumpur.caseActiveArrow,
           bottomRightPercentage: kualaLumpur.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'W.P. Labuan',
@@ -591,7 +597,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: labuan.caseConfirmedToday,
           topLeftUpOrDown: labuan.caseConfirmedArrow,
           topLeftPercentage: labuan.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -600,7 +606,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: labuan.caseRecoveredToday,
           topRightUpOrDown: labuan.caseRecoveredArrow,
           topRightPercentage: labuan.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -609,7 +615,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: labuan.caseDeathToday,
           bottomLeftUpOrDown: labuan.caseDeathArrow,
           bottomLeftPercentage: labuan.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -618,7 +624,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: labuan.caseActiveToday,
           bottomRightUpOrDown: labuan.caseActiveArrow,
           bottomRightPercentage: labuan.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
         StatisticsStatesItems(
           titleText: 'W.P. Putrajaya',
@@ -630,7 +636,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topLeftTodayText: putrajaya.caseConfirmedToday,
           topLeftUpOrDown: putrajaya.caseConfirmedArrow,
           topLeftPercentage: putrajaya.caseConfirmedPercent,
-          topLeftDate: '29 Jan, 2022, 11:59 PM',
+          topLeftDate: widget.time,
           // TOP RIGHT
           topRightColor: kStatisticGreen,
           topRightHeader: 'Total Recovered',
@@ -639,7 +645,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           topRightTodayText: putrajaya.caseRecoveredToday,
           topRightUpOrDown: putrajaya.caseRecoveredArrow,
           topRightPercentage: putrajaya.caseRecoveredPercent,
-          topRightDate: '29 Jan, 2022, 11:59 PM',
+          topRightDate: widget.time,
           // BOTTOM LEFT
           bottomLeftColor: kStatisticGrey,
           bottomLeftHeader: 'Total Death',
@@ -648,7 +654,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomLeftTodayText: putrajaya.caseDeathToday,
           bottomLeftUpOrDown: putrajaya.caseDeathArrow,
           bottomLeftPercentage: putrajaya.caseDeathPercent,
-          bottomLeftDate: '29 Jan, 2022, 11:59 PM',
+          bottomLeftDate: widget.time,
           // BOTTOM RIGHT
           bottomRightColor: kStatisticOrange,
           bottomRightHeader: 'Total Active Cases',
@@ -657,7 +663,7 @@ class _StatisticsStatesState extends State<StatisticsStates> {
           bottomRightTodayText: putrajaya.caseActiveToday,
           bottomRightUpOrDown: putrajaya.caseActiveArrow,
           bottomRightPercentage: putrajaya.caseActivePercent,
-          bottomRightDate: '29 Jan, 2022, 11:59 PM',
+          bottomRightDate: widget.time,
         ),
       ],
     );
