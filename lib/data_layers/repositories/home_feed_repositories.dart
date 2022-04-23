@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
 
-import '../../helper/statistic_calculator.dart';
 import '../models/home_feed_model.dart';
 
 final apiKey = dotenv.env['GOOGLE_API_KEY'];
@@ -19,15 +19,20 @@ class HomeScreenFeedRepositories {
   List<HomeScreenFeedModel> items = [];
 
   Future<List<HomeScreenFeedModel>> fetchFeedList() async {
-    Map<String, dynamic> jsonData = jsonDecode(await fetchJSONasString(
-        cacheManager: cacheManager, urlCSV: urlYouTubeFeed));
+    try {
+      http.Response response = await http.get(Uri.parse(urlYouTubeFeed));
+      Map<String, dynamic> jsonData = jsonDecode(response.body);
 
-    debugPrint('Home screen feed is being updated');
+      debugPrint('Home screen feed is being updated');
 
-    for (int i = 0; i < jsonData["items"].length; i++) {
-      items.add(HomeScreenFeedModel.fromJson(jsonData["items"][i]));
+      for (int i = 0; i < jsonData["items"].length; i++) {
+        items.add(HomeScreenFeedModel.fromJson(jsonData["items"][i]));
+      }
+
+      return items;
+    } catch (e) {
+      debugPrint('Error: $e');
+      throw Exception('Covid-19 Global Data could not be updated');
     }
-
-    return items;
   }
 }
