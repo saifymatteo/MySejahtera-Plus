@@ -3,14 +3,14 @@ import 'package:intl/intl.dart';
 
 final numberFormatter = NumberFormat('#,##0', 'en_US');
 
-class StatisticsCardConfirmedJsonModel {
+class StatisticsCardConfirmedModel {
   final String caseConfirmed;
   final String caseConfirmedToday;
   final String caseConfirmedPercent;
   final IconData caseConfirmedPlus;
   final IconData caseConfirmedArrow;
 
-  StatisticsCardConfirmedJsonModel({
+  StatisticsCardConfirmedModel({
     required this.caseConfirmed,
     required this.caseConfirmedToday,
     required this.caseConfirmedPercent,
@@ -18,9 +18,20 @@ class StatisticsCardConfirmedJsonModel {
     this.caseConfirmedArrow = Icons.arrow_upward_rounded,
   });
 
-  factory StatisticsCardConfirmedJsonModel.fromJson(
+  factory StatisticsCardConfirmedModel.fromCsv(
+      List data) {
+    return StatisticsCardConfirmedModel(
+      caseConfirmed: data[0],
+      caseConfirmedToday: data[1],
+      caseConfirmedPercent: data[2],
+      caseConfirmedPlus: data[3],
+      caseConfirmedArrow: data[4],
+    );
+  }
+
+  factory StatisticsCardConfirmedModel.fromJson(
       Map<String, dynamic> data, List percentAndIcon) {
-    return StatisticsCardConfirmedJsonModel(
+    return StatisticsCardConfirmedModel(
       caseConfirmed: numberFormatter.format(data["cases"]),
       caseConfirmedToday: numberFormatter.format(data["todayCases"]),
       caseConfirmedPercent: percentAndIcon[0],
@@ -30,14 +41,14 @@ class StatisticsCardConfirmedJsonModel {
   }
 }
 
-class StatisticsCardRecoveredJsonModel {
+class StatisticsCardRecoveredModel {
   final String caseRecovered;
   final String caseRecoveredToday;
   final String caseRecoveredPercent;
   final IconData caseRecoveredPlus;
   final IconData caseRecoveredArrow;
 
-  StatisticsCardRecoveredJsonModel({
+  StatisticsCardRecoveredModel({
     required this.caseRecovered,
     required this.caseRecoveredToday,
     required this.caseRecoveredPercent,
@@ -45,9 +56,20 @@ class StatisticsCardRecoveredJsonModel {
     this.caseRecoveredArrow = Icons.arrow_upward_rounded,
   });
 
-  factory StatisticsCardRecoveredJsonModel.fromJson(
+  factory StatisticsCardRecoveredModel.fromCsv(
+      List data) {
+    return StatisticsCardRecoveredModel(
+      caseRecovered: data[0],
+      caseRecoveredToday: data[1],
+      caseRecoveredPercent: data[2],
+      caseRecoveredPlus: data[3],
+      caseRecoveredArrow: data[4],
+    );
+  }
+  
+  factory StatisticsCardRecoveredModel.fromJson(
       Map<String, dynamic> data, List percentAndIcon) {
-    return StatisticsCardRecoveredJsonModel(
+    return StatisticsCardRecoveredModel(
       caseRecovered: numberFormatter.format(data["recovered"]),
       caseRecoveredToday: numberFormatter.format(data["todayRecovered"]),
       caseRecoveredPercent: percentAndIcon[0],
@@ -57,14 +79,14 @@ class StatisticsCardRecoveredJsonModel {
   }
 }
 
-class StatisticsCardDeathJsonModel {
+class StatisticsCardDeathModel {
   final String caseDeath;
   final String caseDeathToday;
   final String caseDeathPercent;
   final IconData caseDeathPlus;
   final IconData caseDeathArrow;
 
-  StatisticsCardDeathJsonModel({
+  StatisticsCardDeathModel({
     required this.caseDeath,
     required this.caseDeathToday,
     required this.caseDeathPercent,
@@ -72,9 +94,20 @@ class StatisticsCardDeathJsonModel {
     this.caseDeathArrow = Icons.arrow_upward_rounded,
   });
 
-  factory StatisticsCardDeathJsonModel.fromJson(
+  factory StatisticsCardDeathModel.fromCsv(
+      List data) {
+    return StatisticsCardDeathModel(
+      caseDeath: data[0],
+      caseDeathToday: data[1],
+      caseDeathPercent: data[2],
+      caseDeathPlus: data[3],
+      caseDeathArrow: data[4],
+    );
+  }
+
+  factory StatisticsCardDeathModel.fromJson(
       Map<String, dynamic> data, List percentAndIcon) {
-    return StatisticsCardDeathJsonModel(
+    return StatisticsCardDeathModel(
       caseDeath: numberFormatter.format(data["deaths"]),
       caseDeathToday: numberFormatter.format(data["todayDeaths"]),
       caseDeathPercent: percentAndIcon[0],
@@ -84,14 +117,14 @@ class StatisticsCardDeathJsonModel {
   }
 }
 
-class StatisticsCardActiveJsonModel {
+class StatisticsCardActiveModel {
   final String caseActive;
   final String caseActiveToday;
   final String caseActivePercent;
   final IconData caseActivePlus;
   final IconData caseActiveArrow;
 
-  StatisticsCardActiveJsonModel({
+  StatisticsCardActiveModel({
     required this.caseActive,
     required this.caseActiveToday,
     required this.caseActivePercent,
@@ -99,9 +132,20 @@ class StatisticsCardActiveJsonModel {
     this.caseActiveArrow = Icons.arrow_upward_rounded,
   });
 
-  factory StatisticsCardActiveJsonModel.fromJson(
+  factory StatisticsCardActiveModel.fromCsv(
+      List data) {
+    return StatisticsCardActiveModel(
+      caseActive: data[0],
+      caseActiveToday: data[1],
+      caseActivePercent: data[2],
+      caseActivePlus: data[3],
+      caseActiveArrow: data[4],
+    );
+  }
+
+  factory StatisticsCardActiveModel.fromJson(
       Map<String, dynamic> data, List percentAndIcon) {
-    return StatisticsCardActiveJsonModel(
+    return StatisticsCardActiveModel(
       caseActive: numberFormatter.format(data["active"]),
       caseActiveToday: numberFormatter.format(data["todayCases"]),
       caseActivePercent: percentAndIcon[0],
