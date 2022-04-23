@@ -64,13 +64,17 @@ class GridStatisticsGlobal extends StatelessWidget {
               ),
             ],
           );
-        } else {
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
             padding: const EdgeInsets.all(30),
             width: 50,
             height: 50,
             child: const CircularProgressIndicator(),
           );
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return const Text('Error, try to restart the app');
         }
       },
     );
