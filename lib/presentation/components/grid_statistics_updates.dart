@@ -4,17 +4,31 @@ import 'package:mysejahtera_plus/data_layers/repositories/statistics_malaysia_re
 import '../../helper/constant.dart';
 import 'card_statistics.dart';
 
-class GridStatisticsUpdates extends StatelessWidget {
-  GridStatisticsUpdates({Key? key, required this.time}) : super(key: key);
+class GridStatisticsUpdates extends StatefulWidget {
+  const GridStatisticsUpdates({Key? key, required this.time}) : super(key: key);
 
-  final StatisticsDataMalaysiaRepositories data =
-      StatisticsDataMalaysiaRepositories();
   final String time;
+
+  @override
+  State<GridStatisticsUpdates> createState() => _GridStatisticsUpdatesState();
+}
+
+class _GridStatisticsUpdatesState extends State<GridStatisticsUpdates> {
+  final StatisticsDataMalaysiaRepositories repo =
+      StatisticsDataMalaysiaRepositories();
+
+  dynamic dataFuture;
+
+  @override
+  void initState() {
+    dataFuture = repo.fetchMalaysiaData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: data.fetchMalaysiaData(),
+      future: dataFuture,
       builder: (context, AsyncSnapshot<List> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return GridView.count(
@@ -35,7 +49,7 @@ class GridStatisticsUpdates extends StatelessWidget {
                     snapshot.data![0].cardConfirmedModel.caseConfirmedArrow,
                 percentage:
                     snapshot.data![0].cardConfirmedModel.caseConfirmedPercent,
-                date: time,
+                date: widget.time,
               ),
               CardStatistics(
                 cardColor: kStatisticGreen,
@@ -49,7 +63,7 @@ class GridStatisticsUpdates extends StatelessWidget {
                     snapshot.data![1].cardRecoveredModel.caseRecoveredArrow,
                 percentage:
                     snapshot.data![1].cardRecoveredModel.caseRecoveredPercent,
-                date: time,
+                date: widget.time,
               ),
               CardStatistics(
                 cardColor: kStatisticGrey,
@@ -60,7 +74,7 @@ class GridStatisticsUpdates extends StatelessWidget {
                     snapshot.data![2].cardDeathModel.caseDeathToday,
                 iconArrow: snapshot.data![2].cardDeathModel.caseDeathArrow,
                 percentage: snapshot.data![2].cardDeathModel.caseDeathPercent,
-                date: time,
+                date: widget.time,
               ),
               CardStatistics(
                 cardColor: kStatisticOrange,
@@ -71,7 +85,7 @@ class GridStatisticsUpdates extends StatelessWidget {
                     snapshot.data![3].cardActiveModel.caseActiveToday,
                 iconArrow: snapshot.data![3].cardActiveModel.caseActiveArrow,
                 percentage: snapshot.data![3].cardActiveModel.caseActivePercent,
-                date: time,
+                date: widget.time,
               ),
               const SizedBox(height: 10),
             ],
