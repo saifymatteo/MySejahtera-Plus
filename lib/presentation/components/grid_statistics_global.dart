@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mysejahtera_plus/data_layers/repositories/statistics_global_repositories.dart';
 
 import '../../helper/constant.dart';
@@ -91,15 +93,31 @@ class _GridStatisticsGlobalState extends State<GridStatisticsGlobal> {
           );
         } else if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
-            padding: const EdgeInsets.all(30),
-            width: 50,
-            height: 50,
-            child: const CircularProgressIndicator(),
+            alignment: Alignment.topCenter,
+            padding: const EdgeInsets.only(top: 20),
+            child: LoadingAnimationWidget.waveDots(
+                color: kPrimarySwatch, size: 50),
           );
         } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+          return Container(
+            alignment: Alignment.topCenter,
+            padding: const EdgeInsets.only(top: 20),
+            child: Text(
+              'Error: ${snapshot.error}',
+              style: GoogleFonts.poppins(
+                  textStyle: Theme.of(context).textTheme.bodySmall),
+            ),
+          );
         } else {
-          return const Text('Error, try to restart the app');
+          return Container(
+            alignment: Alignment.topCenter,
+            padding: const EdgeInsets.only(top: 20),
+            child: Text(
+              'Error, try to restart the app',
+              style: GoogleFonts.poppins(
+                  textStyle: Theme.of(context).textTheme.bodySmall),
+            ),
+          );
         }
       },
     );

@@ -40,6 +40,7 @@ dependencies:
   auto_size_text: ^3.0.0 # Auto resize text - https://pub.dev/packages/auto_size_text
   timeago: ^3.2.2 # Easy time format - https://pub.dev/packages/timeago
   url_launcher: ^6.0.20 # Launch url from String - https://pub.dev/packages/url_launcher
+  loading_animation_widget: ^1.1.0+5 # Loading animation for FutureBuilder - https://pub.dev/packages/loading_animation_widget
   # TODO: QR code iOS configuration
   mobile_scanner: ^1.0.0 # QR code scanner - https://pub.dev/packages/mobile_scanner
 

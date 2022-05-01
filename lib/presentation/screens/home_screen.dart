@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mysejahtera_plus/data_layers/repositories/home_feed_repositories.dart';
+import 'package:mysejahtera_plus/helper/constant.dart';
 
 import '../../data_layers/repositories/date_and_time_repositories.dart';
 import '../components/button_card_activity_feed.dart';
@@ -16,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: repo.fetchFeedList(),
-      builder: (context, AsyncSnapshot<List> snapshot) {
+      builder: (_, AsyncSnapshot<List> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return CustomScrollView(
             slivers: [
@@ -44,15 +47,13 @@ class HomeScreen extends StatelessWidget {
             slivers: [
               HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  Container(
-                    padding: const EdgeInsets.all(30),
-                    width: 50,
-                    height: 50,
-                    child: const CircularProgressIndicator(),
+              SliverToBoxAdapter(
+                child: Center(
+                  child: LoadingAnimationWidget.waveDots(
+                    color: kPrimarySwatch,
+                    size: 50,
                   ),
-                ]),
+                ),
               ),
             ],
           );
@@ -61,10 +62,14 @@ class HomeScreen extends StatelessWidget {
             slivers: [
               HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  Text('Error: ${snapshot.error}'),
-                ]),
+              SliverToBoxAdapter(
+                child: Center(
+                  child: Text(
+                    'Error: ${snapshot.error}',
+                    style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.bodySmall),
+                  ),
+                ),
               ),
             ],
           );
@@ -73,10 +78,14 @@ class HomeScreen extends StatelessWidget {
             slivers: [
               HomeScreenHeader(date: time.fetchDateTime().dateAndDay),
               const HomeScreenTitle(),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  const Text('Error, try to restart the app'),
-                ]),
+              SliverToBoxAdapter(
+                child: Center(
+                  child: Text(
+                    'Error, try to restart the app',
+                    style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.bodySmall),
+                  ),
+                ),
               ),
             ],
           );
