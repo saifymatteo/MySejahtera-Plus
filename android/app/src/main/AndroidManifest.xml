@@ -2,6 +2,7 @@
     package="com.example.mysejahtera_plus">
 
    <uses-permission android:name="android.permission.CAMERA" />
+   <uses-permission android:name="android.permission.INTERNET" />
 
    <application
         android:label="MySejahtera Plus"
