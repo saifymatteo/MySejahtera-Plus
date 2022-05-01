@@ -101,7 +101,7 @@ class StatisticsDataMalaysiaRepositories {
       return data;
     } catch (e) {
       debugPrint('Error: $e');
-      throw Exception('Covid-19 Global Data could not be updated');
+      throw Exception('Covid-19 Malaysia Data could not be updated');
     }
   }
 }
