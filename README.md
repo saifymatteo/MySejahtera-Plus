@@ -1,5 +1,7 @@
 # mysejahtera_plus
 
+[](https://github.com/saifymatteo/MySejahtera-Plus/blob/master/git/mysejahtera_plus.gif)
+
 A clone app of [MySejahtera](https://mysejahtera.malaysia.gov.my/intro/) (Official App from Minister of Health).
 
 ## Status
