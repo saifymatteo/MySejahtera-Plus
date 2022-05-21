@@ -8,7 +8,6 @@
 .buildlog/
 .history
 .svn/
-asset/.env
 
 # IntelliJ related
 *.iml
@@ -45,3 +44,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Custom rules - pre-defined by saifymatteo
+
+# FVM Config
+.fvm/flutter_sdk
+
+# Environment variables
+asset/.env
+.gitignore
