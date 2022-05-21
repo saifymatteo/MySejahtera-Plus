@@ -53,3 +53,7 @@ app.*.map.json
 # Environment variables
 asset/.env
 .gitignore
+# Ignore platforms build
+windows/
+macos/
+web/

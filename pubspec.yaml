@@ -53,6 +53,7 @@ dev_dependencies:
 
   # List of dependecies used in development
   device_preview: ^1.0.0 # To preview app on different devices - https://pub.dev/packages/device_preview
+  change_app_package_name: ^0.1.3 # Change package name - https://pub.dev/packages/change_app_package_name
 
 flutter:
   uses-material-design: true
